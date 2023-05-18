@@ -3,34 +3,47 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../Firebase/firebase.config";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
-    console.log('login page location', location)
-    const from = location.state?.from?.pathname || '/';
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-        form.reset();
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    form.reset();
 
-        signIn(email, password)
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
-                navigate(from, { replace: true })
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div>
@@ -45,10 +58,10 @@ const Login = () => {
               />
             </p>
           </div>
-          <form onSubmit={handleLogin}>
+          <form className="mb-36" onSubmit={handleLogin}>
             <div className="card flex-shrink-0 mr-16 shadow-2xl bg-[#171717]">
               <div className="card-body">
-              <div className="form-control">
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
@@ -70,10 +83,21 @@ const Login = () => {
                     className="input input-bordered"
                   />
                 </div>
-                <p className="mt-4">Don't have an account? <Link to="/register" className="link link-primary">Register</Link></p>
+                <p className="mt-4">
+                  Don't have an account?{" "}
+                  <Link to="/register" className="link link-primary">
+                    Register
+                  </Link>
+                </p>
                 <div className="form-control mt-5">
                   <button className="btn btn-primary">Login</button>
                 </div>
+              </div>
+              <div className="divider">OR Login With</div>
+              <div className="card-body justify-center mx-auto">
+                <button onClick={handleGoogleLogin} className="btn btn-primary">
+                  <FaGoogle></FaGoogle>
+                </button>
               </div>
             </div>
           </form>

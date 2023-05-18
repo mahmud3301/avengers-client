@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="md:ml-64">
           <NavLink to="/" className="mt-1 ml-3">
             <div className="rounded-full">
-              <img className="w-[50%]"
+              <img className="w-24 h-28"
                 src="https://cdn.iconscout.com/icon/free/png-256/free-marvel-282124.png?f=webp"
                 alt=""
               />
@@ -29,7 +29,7 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <span className="footer-title mt-0 lg:mt-[66%]">Social</span>
+          <span className="footer-title mt-0 lg:mt-[69%]">Social</span>
           <div className="grid grid-flow-col gap-0">
             <div className="btn-circle text-xl">
               <a href="https://www.facebook.com/mahmudulhasan13.1.8.9">

@@ -1,6 +1,36 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import { useState } from "react";
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
+
+  const renderTooltip = () => {
+    return (
+      <ReactTooltip place="bottom" effect="solid">
+        {user.displayName}
+      </ReactTooltip>
+    );
+  };
   return (
     <div>
       <div className="navbar bg-[#101010]">
@@ -98,9 +128,27 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink to="/login" className="btn btn-primary mr-2">
-            Login
-          </NavLink>
+          {user ? (
+            <div
+              className="relative flex items-center"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}>
+              <div
+                className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
+                data-tip={user.displayName}>
+                <img
+                  src={user.photoURL}
+                  alt="User Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {showTooltip && renderTooltip()}
+            </div>
+          ) : (
+            <NavLink to="/login" className="btn btn-primary mr-2">
+              Login
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

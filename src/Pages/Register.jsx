@@ -6,7 +6,6 @@ const Register = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("login page location", location);
   const from = location.state?.from?.pathname || "/";
 
   const handleRegister = (event) => {
@@ -16,7 +15,6 @@ const Register = () => {
     const url = form.url.value;
     const email = form.email.value;
     const password = form.password.value;
-    form.reset();
 
     console.log(name, url, email, password);
     createUser(email, password)
