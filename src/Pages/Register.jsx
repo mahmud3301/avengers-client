@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 import { FaGoogle } from "react-icons/fa";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 
 const Register = () => {
@@ -14,6 +15,7 @@ const Register = () => {
   const from = location.state?.from?.pathname || "/";
   const [error, setError] = useState("");
   const [errorMassage, setErrorMassage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -64,7 +66,7 @@ const Register = () => {
           <div className="text-center lg:text-left">
             <p className="w-full h-full">
               <img
-              className="w-96 mb-8"
+                className="w-96 mb-8"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaUAP6QZEVsyb3pPnYUUp2I2Hz0J4NmX_cg&usqp=CAU"
                 alt=""
               />
@@ -99,12 +101,19 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className="input input-bordered"
-                  />
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Password"
+                      className="input input-bordered w-full"
+                    />
+                    <div
+                      className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}>
+                      {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                    </div>
+                  </div>
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -133,7 +142,9 @@ const Register = () => {
               </div>
               <div className="divider">OR Register With</div>
               <div className="card-body justify-center mx-auto">
-                <button onClick={handleGoogleRegister} className="btn btn-primary">
+                <button
+                  onClick={handleGoogleRegister}
+                  className="btn btn-primary">
                   <FaGoogle></FaGoogle>
                 </button>
               </div>

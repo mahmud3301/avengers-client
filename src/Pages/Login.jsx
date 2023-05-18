@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 import { useState } from "react";
@@ -16,6 +17,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -23,7 +25,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     form.reset();
-    
+
     if (!email || !password) {
       setError("Please fill in all the fields");
       return;
@@ -60,7 +62,7 @@ const Login = () => {
           <div className="text-center lg:text-left">
             <p className="py-6">
               <img
-              className="w-96 mb-8"
+                className="w-96 mb-8"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaUAP6QZEVsyb3pPnYUUp2I2Hz0J4NmX_cg&usqp=CAU"
                 alt=""
               />
@@ -84,13 +86,21 @@ const Login = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className="input input-bordered"
-                  />
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Password"
+                      className="input input-bordered w-full"
+                    />
+                    <div
+                      className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}>
+                      {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                    </div>
+                  </div>
                 </div>
+
                 <p className="mt-4">
                   Don't have an account?{" "}
                   <Link to="/register" className="link link-primary">

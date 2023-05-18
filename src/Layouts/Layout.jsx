@@ -9,7 +9,7 @@ const Layout = () => {
             <Header/>
             <div className="min-h-screen">
                 <Outlet/>
-            </div>
+            </div><br /> <br /> <br /><br /> <br /> <br />
             <Footer/>
         </div>
     );

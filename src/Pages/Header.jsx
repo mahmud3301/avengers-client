@@ -1,9 +1,6 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-// import { useState } from "react";
-// import { Tooltip as ReactTooltip } from "react-tooltip";
-import "react-tooltip/dist/react-tooltip.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -13,24 +10,6 @@ const Header = () => {
       .then()
       .catch((error) => console.log(error));
   };
-
-  // const [showTooltip, setShowTooltip] = useState(false);
-
-  // const handleMouseEnter = () => {
-  //   setShowTooltip(true);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setShowTooltip(false);
-  // };
-
-  // const renderTooltip = () => {
-  //   return (
-  //     <ReactTooltip place="bottom" effect="solid">
-  //       {user.displayName}
-  //     </ReactTooltip>
-  //   );
-  // };
 
   return (
     <div>
@@ -65,16 +44,20 @@ const Header = () => {
                   All Toys
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/my-toys" activeClassName="">
-                  My Toys
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/add-toys" activeClassName="">
-                  Add A Toy
-                </NavLink>
-              </li>
+              {user && (
+                <>
+                  <li>
+                    <NavLink to="/my-toys" activeClassName="">
+                      My Toys
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/add-toys" activeClassName="">
+                      Add A Toy
+                    </NavLink>
+                  </li>
+                </>
+              )}
               <li>
                 <NavLink to="/blogs" activeClassName="">
                   Blog
@@ -111,16 +94,20 @@ const Header = () => {
                 All Toys
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/my-toys" activeClassName="">
-                My Toys
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/add-toys" activeClassName="">
-                Add Toys
-              </NavLink>
-            </li>
+            {user && (
+              <>
+                <li>
+                  <NavLink to="/my-toys" activeClassName="">
+                    My Toys
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/add-toys" activeClassName="">
+                    Add A Toy
+                  </NavLink>
+                </li>
+              </>
+            )}
             <li>
               <NavLink to="/blogs" activeClassName="">
                 Blog
@@ -130,24 +117,14 @@ const Header = () => {
         </div>
         <div className="navbar-end">
           {user && (
-            //   <div
-            //   className="relative flex items-center"
-            //   onMouseEnter={handleMouseEnter}
-            //   onMouseLeave={handleMouseLeave}>
-            //   <div
-            //     className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
-            //     data-tip={user.displayName}>
-            //     <img
-            //       src={user.photoURL}
-            //       alt="User Profile"
-            //       className="w-full h-full object-cover"
-            //     />
-            //   </div>
-            //   {/* {showTooltip && renderTooltip()} */}
-            // </div>
-
             <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
-              <button><img className="w-10 mt-1 rounded-xl" src={user.photoURL} alt="" /></button>
+              <button>
+                <img
+                  className="w-10 mt-2 rounded-xl"
+                  src={user.photoURL}
+                  alt=""
+                />
+              </button>
             </div>
           )}
           {user ? (
