@@ -1,103 +1,72 @@
-// import { useContext } from "react";
-// import { Link } from "react-router-dom";
-// import { AuthContext } from '../Provider/AuthProvider';
-
-// const Register = () => {
-//   const { createUser } = useContext(AuthContext);
-
-//   const handleSignUp = (event) => {
-//     event.preventDefault();
-//     const form = event.target;
-//     const name = form.name.value;
-//     const email = form.email.value;
-//     const password = form.password.value;
-//     console.log(name, email, password);
-
-//     createUser(email, password)
-//       .then((result) => {
-//         const user = result.user;
-//         console.log("created user", user);
-//       })
-//       .catch((error) => console.log(error));
-//   };
-
-//   return (
-//     <div className="hero min-h-screen bg-base-200">
-//       <div className="hero-content flex-col lg:flex-row">
-//         <div className="w-1/2 mr-12">
-//           {/* <img src={img} alt="" /> */}
-//         </div>
-//         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-//           <div className="card-body">
-//             <h1 className="text-3xl text-center font-bold">Sign Up</h1>
-//             <form onSubmit={handleSignUp}>
-//               <div className="form-control">
-//                 <label className="label">
-//                   <span className="label-text">Name</span>
-//                 </label>
-//                 <input
-//                   type="text"
-//                   name="name"
-//                   placeholder="name"
-//                   className="input input-bordered"
-//                 />
-//               </div>
-//               <div className="form-control">
-//                 <label className="label">
-//                   <span className="label-text">Email</span>
-//                 </label>
-//                 <input
-//                   type="text"
-//                   name="email"
-//                   placeholder="email"
-//                   className="input input-bordered"
-//                 />
-//               </div>
-//               <div className="form-control">
-//                 <label className="label">
-//                   <span className="label-text">Confirm Password</span>
-//                 </label>
-//                 <input
-//                   type="password"
-//                   name="password"
-//                   placeholder="password"
-//                   className="input input-bordered"
-//                 />
-//                 <label className="label">
-//                   <a href="#" className="label-text-alt link link-hover">
-//                     Forgot password?
-//                   </a>
-//                 </label>
-//               </div>
-//               <div className="form-control mt-6">
-//                 <input
-//                   className="btn btn-primary"
-//                   type="submit"
-//                   value="Sign Up"
-//                 />
-//               </div>
-//             </form>
-//             <p className="my-4 text-center">
-//               Already Have an Account?{" "}
-//               <Link className="text-orange-600 font-bold" to="/login">
-//                 Login
-//               </Link>{" "}
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Register;
-
+import { Link } from "react-router-dom";
 
 
 const Register = () => {
   return (
     <div>
-      
+      <h1 className="text-5xl font-bold text-center mt-28">Register now!</h1>
+      <div className="hero bg-[#000]">
+        <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left">
+            <p className="py-6">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaUAP6QZEVsyb3pPnYUUp2I2Hz0J4NmX_cg&usqp=CAU"
+                alt=""
+              />
+            </p>
+          </div>
+          <form>
+            <div className="card flex-shrink-0 mr-16 shadow-2xl bg-[#171717]">
+              <div className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Name</span>
+                  </label>
+                  <input
+                    type="name"
+                    placeholder="Name"
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Photo Url</span>
+                  </label>
+                  <input
+                    type="url"
+                    placeholder="Photo Url"
+                    className="input input-bordered"
+                  />
+                </div>
+                <p className="mt-4">Already have an account? <Link to="/login" className="link link-primary">Login</Link></p>
+                <div className="form-control mt-5">
+                  <button className="btn btn-primary">Register</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
