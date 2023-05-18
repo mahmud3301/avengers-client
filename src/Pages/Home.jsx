@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link as ScrollLink} from "react-scroll";
 import Gallery from "./Gallery";
+import Category from "./Category";
 
 const Home = () => {
   return (
@@ -27,6 +28,7 @@ const Home = () => {
         </div>
       </div>
       <Gallery/>
+      <Category/>
     </div>
   );
 };
