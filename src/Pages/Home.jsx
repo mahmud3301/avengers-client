@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link as ScrollLink} from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import Gallery from "./Gallery";
 import Category from "./Category";
 
@@ -27,8 +27,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Gallery/>
-      <Category/>
+      <Gallery />
+      <ScrollLink to="/Category" smooth={true} duration={600}>
+        <Category />
+      </ScrollLink>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Gallery = () => {
   const [isBlur, setIsBlur] = useState(true);
 
   useEffect(() => {
-    fetch("gallerydata.json")
+    fetch("http://localhost:7000/image-gallery")
       .then((res) => res.json())
       .then((data) => {
         setGalleryData(data);
@@ -23,14 +23,14 @@ const Gallery = () => {
 
   return (
     <div id="gallery">
-      <div className="p-8 container">
+      <div className="p-8 container justify-center mx-auto">
         <div>
           <h2 className="text-3xl font-bold text-center mb-24 mt-11">
             Our Top Avenger <span className="text-primary">Toys</span>
           </h2>
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-4 ">
             {galleryData?.slice(0, showAll ? 12 : 8).map((image) => (
-              <LazyLoad key={image.id} once>
+              <LazyLoad key={image._id} once>
                 <div className="relative">
                   <img
                     src={image.src}
@@ -49,7 +49,7 @@ const Gallery = () => {
           {!showAll && (
             <div className="text-center">
               <span onClick={handleShowAll}>
-                <button className="btn btn-primary">See More</button>
+                <button className="btn btn-primary mt-16">See More</button>
               </span>
             </div>
           )}
