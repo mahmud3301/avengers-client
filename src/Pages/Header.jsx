@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import { useState } from "react";
-import { Tooltip as ReactTooltip } from 'react-tooltip'
-import 'react-tooltip/dist/react-tooltip.css'
+// import { useState } from "react";
+// import { Tooltip as ReactTooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -14,23 +14,24 @@ const Header = () => {
       .catch((error) => console.log(error));
   };
 
-  const [showTooltip, setShowTooltip] = useState(false);
+  // const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleMouseEnter = () => {
-    setShowTooltip(true);
-  };
+  // const handleMouseEnter = () => {
+  //   setShowTooltip(true);
+  // };
 
-  const handleMouseLeave = () => {
-    setShowTooltip(false);
-  };
+  // const handleMouseLeave = () => {
+  //   setShowTooltip(false);
+  // };
 
-  const renderTooltip = () => {
-    return (
-      <ReactTooltip place="bottom" effect="solid">
-        {user.displayName}
-      </ReactTooltip>
-    );
-  };
+  // const renderTooltip = () => {
+  //   return (
+  //     <ReactTooltip place="bottom" effect="solid">
+  //       {user.displayName}
+  //     </ReactTooltip>
+  //   );
+  // };
+
   return (
     <div>
       <div className="navbar bg-[#101010]">
@@ -92,7 +93,7 @@ const Header = () => {
             </NavLink>
             <NavLink
               to="/"
-              className="btn btn-ghost normal-case text-xl mt-1"
+              className="btn btn-ghost normal-case text-xl mt-1 text-[#101010] lg:text-white"
               activeClassName="">
               Avengers Shop
             </NavLink>
@@ -128,25 +129,36 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {user ? (
-            <div
-              className="relative flex items-center"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}>
-              <div
-                className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
-                data-tip={user.displayName}>
-                <img
-                  src={user.photoURL}
-                  alt="User Profile"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {showTooltip && renderTooltip()}
+          {user && (
+            //   <div
+            //   className="relative flex items-center"
+            //   onMouseEnter={handleMouseEnter}
+            //   onMouseLeave={handleMouseLeave}>
+            //   <div
+            //     className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
+            //     data-tip={user.displayName}>
+            //     <img
+            //       src={user.photoURL}
+            //       alt="User Profile"
+            //       className="w-full h-full object-cover"
+            //     />
+            //   </div>
+            //   {/* {showTooltip && renderTooltip()} */}
+            // </div>
+
+            <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+              <button><img className="w-10 mt-1 rounded-xl" src={user.photoURL} alt="" /></button>
             </div>
+          )}
+          {user ? (
+            <button
+              className="btn btn-primary mr-3 ml-3"
+              onClick={handleLogOut}>
+              Logout
+            </button>
           ) : (
-            <NavLink to="/login" className="btn btn-primary mr-2">
-              Login
+            <NavLink to="/login">
+              <button className="btn btn-primary mr-3">Login</button>
             </NavLink>
           )}
         </div>

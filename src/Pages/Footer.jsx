@@ -6,7 +6,7 @@ const Footer = () => {
     <div>
       <footer className="footer p-10 bg-[#101010] text-neutral-content">
         <div className="md:ml-64">
-          <NavLink to="/" className="mt-1 ml-3">
+          <NavLink to="/" className="mt-1 ml-1">
             <div className="rounded-full">
               <img className="w-24 h-28"
                 src="https://cdn.iconscout.com/icon/free/png-256/free-marvel-282124.png?f=webp"

@@ -6,6 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import { useState } from "react";
 
 const Login = () => {
   const auth = getAuth(app);
@@ -14,6 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const [error, setError] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -21,7 +23,11 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     form.reset();
-
+    
+    if (!email || !password) {
+      setError("Please fill in all the fields");
+      return;
+    }
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
@@ -30,6 +36,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError("Invalid email or password");
       });
   };
 
@@ -53,13 +60,14 @@ const Login = () => {
           <div className="text-center lg:text-left">
             <p className="py-6">
               <img
+              className="w-96 mb-8"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaUAP6QZEVsyb3pPnYUUp2I2Hz0J4NmX_cg&usqp=CAU"
                 alt=""
               />
             </p>
           </div>
-          <form className="mb-36" onSubmit={handleLogin}>
-            <div className="card flex-shrink-0 mr-16 shadow-2xl bg-[#171717]">
+          <form className="w-full" onSubmit={handleLogin}>
+            <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-[#171717]">
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -89,6 +97,7 @@ const Login = () => {
                     Register
                   </Link>
                 </p>
+                <p className="text-error mt-3 text-center">{error}</p>
                 <div className="form-control mt-5">
                   <button className="btn btn-primary">Login</button>
                 </div>
