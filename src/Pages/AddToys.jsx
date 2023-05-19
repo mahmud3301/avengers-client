@@ -30,7 +30,7 @@ const AddToys = () => {
       sellerName,
       sellerEmail
     };
-    fetch("http://localhost:7000/all-toys", {
+    fetch("http://localhost:7000/all-toys-data", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -41,14 +41,26 @@ const AddToys = () => {
       .then((data) => {
         console.log(data);
         form.reset();
+        if (data.acknowledged) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Toys Added Successfully",
+            background: "#101010",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      else {
         Swal.fire({
           position: "center",
-          icon: "success",
-          title: "Toy Added Successfully",
+          icon: "error",
+          title: "Something went wrong",
           background: "#101010",
           showConfirmButton: false,
           timer: 1500
         });
+      }
       });
   };
 
