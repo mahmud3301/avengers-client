@@ -8,8 +8,10 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 import { useState } from "react";
+import UseTitle from "../Hooks/UseTitle";
 
 const Login = () => {
+  UseTitle("Login");
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const { signIn } = useContext(AuthContext);

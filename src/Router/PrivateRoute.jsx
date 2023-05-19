@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation()
 
     if(loading) {
-        return <progress className="progress w-56"></progress>
+        return <progress className="progress progress-primary w-100"></progress>
     }
 
     if(user?.email){

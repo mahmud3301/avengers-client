@@ -2,8 +2,12 @@
 import { Link as ScrollLink } from "react-scroll";
 import Gallery from "./Gallery";
 import Category from "./Category";
+import UseTitle from "../Hooks/UseTitle";
+import Inspire from "./Inspire";
+import ClientReview from "./ClientReview";
 
 const Home = () => {
+  UseTitle("Home");
   return (
     <div>
       <div
@@ -28,9 +32,9 @@ const Home = () => {
         </div>
       </div>
       <Gallery />
-      <ScrollLink to="/Category" smooth={true} duration={600}>
-        <Category />
-      </ScrollLink>
+      <Category />
+      <Inspire/>
+      <ClientReview/>
     </div>
   );
 };

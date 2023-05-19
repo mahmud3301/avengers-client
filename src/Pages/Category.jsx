@@ -14,6 +14,7 @@ const Category = () => {
   const from = location.state?.from?.pathname || "/login";
   const [toysData, setToysData] = useState([]);
   const { user } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(true); // New state for loading
 
   const openModal = (toy) => {
     if (!user) {
@@ -36,15 +37,18 @@ const Category = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true); // Set loading to true before fetching data
+
     fetch("http://localhost:7000/toys-data")
       .then((res) => res.json())
       .then((data) => {
         setToysData(data);
+        setIsLoading(false); // Set loading to false after data is fetched
       });
   }, []);
 
   return (
-    <div id="/Category" className="container mt-16 mb-24 justify-center text-center mx-auto">
+    <div className="container mt-16 mb-24 justify-center text-center mx-auto">
       <div className="justify-center mx-auto text-center">
         <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
           <TabList className="tabs justify-center text-center mx-auto">
@@ -55,100 +59,121 @@ const Category = () => {
 
           <TabPanel>
             <h2 className="text-3xl font-bold mt-16 mb-12">Iron Man Toys</h2>
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
-              {toysData[0]?.ironManToys?.map((item, index) => (
-                <div key={index} className="hero rounded-2xl bg-[#101010]">
-                  <div className="hero-content flex-col lg:flex-row">
-                    <img
-                      src={item.picture}
-                      alt={item.name}
-                      className="max-w-sm rounded-lg shadow-2xl"
-                    />
-                    <div>
-                      <h1 className="text-5xl font-bold">{item.name}</h1>
-                      <h1 className="text-xl mt-8 font-bold">
-                        Price: {item.price}
-                      </h1>
-                      <h1 className="text-xl mt-3 font-bold">
-                        Ratings: {item.rating}
-                      </h1>
-                      <button
-                        className="btn btn-primary mt-8"
-                        onClick={() => openModal(item)}>
-                        View Details
-                      </button>
+            {isLoading ? ( // Render loading spinner if loading is true
+              <div className="flex justify-center mt-8">
+                <div className="loader" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
+                {toysData[0]?.ironManToys?.map((item, index) => (
+                  <div key={index} className="hero rounded-2xl bg-[#101010]">
+                    <div className="hero-content flex-col lg:flex-row">
+                      <img
+                        src={item.picture}
+                        alt={item.name}
+                        className="max-w-sm rounded-lg shadow-2xl"
+                      />
+                      <div>
+                        <h1 className="text-5xl font-bold">{item.name}</h1>
+                        <h1 className="text-xl mt-8 font-bold">
+                          Price: {item.price}
+                        </h1>
+                        <h1 className="text-xl mt-3 font-bold">
+                          Ratings: {item.rating}
+                        </h1>
+                        <button
+                          className="btn btn-primary mt-8"
+                          onClick={() => openModal(item)}
+                        >
+                          View Details
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </TabPanel>
           <TabPanel>
             <h2 className="text-3xl font-bold mt-16 mb-12">Spider Man Toys</h2>
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2 container justify-center mx-auto">
-              {toysData[1]?.spiderManToys?.map((item, index) => (
-                <div key={index} className="hero rounded-2xl bg-[#101010]">
-                  <div className="hero-content flex-col lg:flex-row">
-                    <img
-                      src={item.picture}
-                      alt={item.name}
-                      className="max-w-sm rounded-lg shadow-2xl"
-                    />
-                    <div>
-                      <h1 className="text-5xl font-bold">{item.name}</h1>
-                      <h1 className="text-xl mt-8 font-bold">
-                        Price: {item.price}
-                      </h1>
-                      <h1 className="text-xl mt-3 font-bold">
-                        Ratings: {item.rating}
-                      </h1>
-                      <button
-                        className="btn btn-primary mt-8"
-                        onClick={() => openModal(item)}>
-                        View Details
-                      </button>
+            {isLoading ? (
+              <div className="flex justify-center mt-8">
+                <div className="loader" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
+                {toysData[1]?.spiderManToys?.map((item, index) => (
+                  <div key={index} className="hero rounded-2xl bg-[#101010]">
+                    <div className="hero-content flex-col lg:flex-row">
+                      <img
+                        src={item.picture}
+                        alt={item.name}
+                        className="max-w-sm rounded-lg shadow-2xl"
+                      />
+                      <div>
+                        <h1 className="text-5xl font-bold">{item.name}</h1>
+                        <h1 className="text-xl mt-8 font-bold">
+                          Price: {item.price}
+                        </h1>
+                        <h1 className="text-xl mt-3 font-bold">
+                          Ratings: {item.rating}
+                        </h1>
+                        <button
+                          className="btn btn-primary mt-8"
+                          onClick={() => openModal(item)}
+                        >
+                          View Details
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </TabPanel>
           <TabPanel>
             <h2 className="text-3xl font-bold mt-16 mb-12">Groot Toys</h2>
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
-              {toysData[2]?.grootToys?.map((item, index) => (
-                <div key={index} className="hero rounded-2xl bg-[#101010]">
-                  <div className="hero-content flex-col lg:flex-row">
-                    <img
-                      src={item.picture}
-                      alt={item.name}
-                      className="max-w-sm rounded-lg shadow-2xl"
-                    />
-                    <div>
-                      <h1 className="text-5xl font-bold">{item.name}</h1>
-                      <h1 className="text-xl mt-8 font-bold">
-                        Price: {item.price}
-                      </h1>
-                      <h1 className="text-xl mt-3 font-bold">
-                        Ratings: {item.rating}
-                      </h1>
-                      <button
-                        className="btn btn-primary mt-8"
-                        onClick={() => openModal(item)}>
-                        View Details
-                      </button>
+            {isLoading ? (
+              <div className="flex justify-center mt-8">
+                <div className="loader" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
+                {toysData[2]?.grootToys?.map((item, index) => (
+                  <div key={index} className="hero rounded-2xl bg-[#101010]">
+                    <div className="hero-content flex-col lg:flex-row">
+                      <img
+                        src={item.picture}
+                        alt={item.name}
+                        className="max-w-sm rounded-lg shadow-2xl"
+                      />
+                      <div>
+                        <h1 className="text-5xl font-bold">{item.name}</h1>
+                        <h1 className="text-xl mt-8 font-bold">
+                          Price: {item.price}
+                        </h1>
+                        <h1 className="text-xl mt-3 font-bold">
+                          Ratings: {item.rating}
+                        </h1>
+                        <button
+                          className="btn btn-primary mt-8"
+                          onClick={() => openModal(item)}
+                        >
+                          View Details
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </TabPanel>
         </Tabs>
       </div>
       {selectedToy && isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="modal modal-open">
-            <div className="modal-box w-11/12 max-w-5xl">
+            <div className="modal-box bg-[#101010] w-11/12 max-w-5xl">
               <div className="grid grid-cols-1 lg:grid-cols-2 mt-12">
                 <img
                   src={selectedToy.picture}

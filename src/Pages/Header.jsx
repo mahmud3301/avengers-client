@@ -103,7 +103,7 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink to="/add-toys" activeClassName="">
-                    Add A Toy
+                    Add Toys
                   </NavLink>
                 </li>
               </>

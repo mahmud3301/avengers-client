@@ -6,8 +6,10 @@ import app from "../Firebase/firebase.config";
 import { FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
+import UseTitle from "../Hooks/UseTitle";
 
 const Register = () => {
+  UseTitle("Register");
   const auth = getAuth(app);
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
