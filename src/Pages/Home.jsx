@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link as ScrollLink } from "react-scroll";
 import Gallery from "./Gallery";
-import Category from "./Category";
+import Category from "./CategoryPages/Category";
 import UseTitle from "../Hooks/UseTitle";
 import TopCollections from "./TopCollections";
 import ClientReview from "./ClientReview";
