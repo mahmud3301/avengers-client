@@ -30,7 +30,7 @@ const AllToys = () => {
         onChange={(e) => setSearchText(e.target.value)}
           type="text"
           placeholder="Search..."
-          className="input input-bordered border-primary w-[45%]"
+          className="input input-bordered border-primary w-40 lg:w-[45%]"
         />
         <button onClick={handleSearch} className="btn btn-primary ml-3"><AiOutlineSearch/></button>
       </div>
@@ -39,6 +39,7 @@ const AllToys = () => {
           <thead>
             <tr>
               <th></th>
+              <th>Product No.</th>
               <th>Seller</th>
               <th>Toy Name</th>
               <th>Sub category</th>
@@ -49,12 +50,13 @@ const AllToys = () => {
           </thead>
           <tbody data-aos="fade-left">
             {toys.map((toy, index) => (
-              <tr key={toy.id}>
+              <tr key={toy._id}>
+                <th></th>
                 <th>{index+1}</th>
                 <td className="font-bold">{toy.seller}</td>
                 <td>{toy.toyName}</td>
                 <td>{toy.subCategory}</td>
-                <td>$ {toy.price}</td>
+                <td>${toy.price}</td>
                 <td>{toy.availableQuantity}</td>
                 <td>
                   <button className="btn btn-primary">View Details</button>
