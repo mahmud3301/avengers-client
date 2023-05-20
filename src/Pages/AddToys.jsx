@@ -28,14 +28,14 @@ const AddToys = () => {
       pictureUrl,
       subCategory,
       seller,
-      sellerEmail
+      sellerEmail,
     };
     fetch("http://localhost:7000/all-toys-data", {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -48,26 +48,27 @@ const AddToys = () => {
             title: "Toys Added Successfully",
             background: "#101010",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Something went wrong",
+            background: "#101010",
+            showConfirmButton: false,
+            timer: 1500,
           });
         }
-      else {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Something went wrong",
-          background: "#101010",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
       });
   };
 
   return (
     <div className="container justify-center mx-auto">
       <div>
-        <h2 data-aos="fade-left" className="text-2xl font-bold mt-8 mb-14 text-center">
+        <h2
+          data-aos="fade-left"
+          className="text-2xl font-bold mt-8 mb-14 text-center">
           Add A <span className="text-primary">Toy</span>
         </h2>
         <form onSubmit={handleSubmit}>
@@ -122,16 +123,38 @@ const AddToys = () => {
             )}
             <div data-aos="fade-up" className="mb-4 ml-6 lg:ml-0">
               <label className="label">Sub-category</label>
-              <input
-                type="text"
-                id="subCategory"
-                className="input w-80 md:w-full lg:w-full"
+              <select
                 required
-                placeholder="Sub-category"
-              />
+                id="subCategory"
+                className="select w-80 md:w-full lg:w-full">
+                <option disabled selected>
+                  Sub Category
+                </option>
+                <option>Iron Man</option>
+                <option>Spider-Man</option>
+                <option>Captain America</option>
+                <option>Thor</option>
+                <option>Hulk</option>
+                <option>Black Widow</option>
+                <option>Hawkeye </option>
+                <option>Black Panther</option>
+                <option>Doctor Strange</option>
+                <option>Captain Marvel </option>
+                <option>Wolverine </option>
+                <option>Deadpool </option>
+                <option>Scarlet Witch</option>
+                <option>Vision</option>
+                <option>Ant-Man</option>
+                <option>Wasp </option>
+                <option>Star-Lord </option>
+                <option>Gamora</option>
+                <option>Groot</option>
+                <option>Rocket Raccoon</option>
+              </select>
             </div>
             <div data-aos="fade-down" className="mb-4 ml-6 lg:ml-0">
               <label className="label">Price</label>
+              <div>
               <input
                 type="text"
                 id="price"
@@ -139,6 +162,7 @@ const AddToys = () => {
                 required
                 placeholder="Price"
               />
+              </div>
             </div>
             <div data-aos="fade-up" className="mb-4 ml-6 lg:ml-0">
               <label htmlFor="rating" className="label">
