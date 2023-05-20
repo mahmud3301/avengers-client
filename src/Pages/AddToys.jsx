@@ -67,48 +67,52 @@ const AddToys = () => {
   return (
     <div className="container justify-center mx-auto">
       <div>
-        <h2 className="text-2xl font-bold text-primary mt-8 mb-14 text-center">
-          Add A Toy
+        <h2 data-aos="fade-left" className="text-2xl font-bold mt-8 mb-14 text-center">
+          Add A <span className="text-primary">Toy</span>
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-            <div className="mb-4">
+            <div data-aos="fade-up" className="mb-4 ml-6 lg:ml-0">
               <label className="label">Picture URL of the toy</label>
               <input
                 type="text"
                 id="pictureUrl"
-                className="input input-bordered input-primary w-full"
+                className="input w-80 md:w-full lg:w-full"
+                required
                 placeholder="Picture URL of the toy"
               />
             </div>
-            <div className="mb-4">
+            <div data-aos="fade-down" className="mb-4 ml-6 lg:ml-0">
               <label className="label">Name</label>
               <input
                 type="text"
                 id="name"
-                className="input input-bordered input-primary w-full"
+                className="input w-80 md:w-full lg:w-full"
+                required
                 placeholder="Name"
               />
             </div>
             {user && (
               <>
-                <div className="mb-4">
+                <div data-aos="fade-up" className="mb-4 ml-6 lg:ml-0">
                   <label className="label">Seller Name</label>
                   <input
                     type="text"
                     id="sellerName"
-                    className="input input-bordered input-primary w-full"
+                    className="input w-80 md:w-full lg:w-full"
+                    required
                     placeholder="Seller Name"
                     defaultValue={user?.displayName || ""}
                     disabled
                   />
                 </div>
-                <div className="mb-4">
+                <div data-aos="fade-down" className="mb-4 ml-6 lg:ml-0">
                   <label className="label">Seller Email</label>
                   <input
                     type="text"
                     id="sellerEmail"
-                    className="input input-bordered input-primary w-full"
+                    className="input w-80 md:w-full lg:w-full"
+                    required
                     placeholder="Seller Email"
                     defaultValue={user?.email || ""}
                     disabled
@@ -116,58 +120,63 @@ const AddToys = () => {
                 </div>
               </>
             )}
-            <div className="mb-4">
+            <div data-aos="fade-up" className="mb-4 ml-6 lg:ml-0">
               <label className="label">Sub-category</label>
               <input
                 type="text"
                 id="subCategory"
-                className="input input-bordered input-primary w-full"
+                className="input w-80 md:w-full lg:w-full"
+                required
                 placeholder="Sub-category"
               />
             </div>
-            <div className="mb-4">
+            <div data-aos="fade-down" className="mb-4 ml-6 lg:ml-0">
               <label className="label">Price</label>
               <input
                 type="text"
                 id="price"
-                className="input input-bordered input-primary w-full"
+                className="input w-80 md:w-full lg:w-full"
+                required
                 placeholder="Price"
               />
             </div>
-            <div className="mb-4">
+            <div data-aos="fade-up" className="mb-4 ml-6 lg:ml-0">
               <label htmlFor="rating" className="label">
                 Rating
               </label>
               <input
                 type="text"
                 id="rating"
-                className="input input-bordered input-primary w-full"
+                className="input w-80 md:w-full lg:w-full"
+                required
                 placeholder="Rating"
               />
             </div>
-            <div className="mb-4">
+            <div data-aos="fade-down" className="mb-4 ml-6 lg:ml-0">
               <label htmlFor="quantity" className="label">
                 Available Quantity
               </label>
               <input
                 type="text"
                 id="quantity"
-                className="input input-bordered input-primary w-full"
+                className="input w-80 md:w-full lg:w-full"
+                required
                 placeholder="Available Quantity"
               />
             </div>
           </div>
-          <div className="mb-4">
+          <div data-aos="flip-up" className="mb-4 mx-6 lg:mx-0">
             <label htmlFor="description" className="label">
               Detail Description
             </label>
             <textarea
               id="description"
-              className="textarea textarea-bordered textarea-primary w-full"
+              className="textarea w-full"
+              required
               placeholder="Detail Description"
             />
           </div>
-          <div className="w-100">
+          <div className="lg:mx-0 mx-5 w-100">
             <button type="submit" className="btn btn-primary btn-block">
               Submit
             </button>

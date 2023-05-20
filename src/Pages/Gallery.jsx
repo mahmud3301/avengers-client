@@ -25,12 +25,12 @@ const Gallery = () => {
     <div id="gallery">
       <div className="p-8 container justify-center mx-auto">
         <div>
-          <h2 className="text-3xl font-bold text-center mb-24 mt-11">
+          <h2 data-aos="flip-left" className="text-3xl font-bold text-center mb-24 mt-11">
             Our Top Avenger <span className="text-primary">Toys</span>
           </h2>
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-4 ">
+          <div data-aos="zoom-in-up" className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-4 ">
             {galleryData?.slice(0, showAll ? 12 : 8).map((image) => (
-              <LazyLoad key={image._id} once>
+              <LazyLoad key={image._id}>
                 <div className="relative">
                   <img
                     src={image.src}

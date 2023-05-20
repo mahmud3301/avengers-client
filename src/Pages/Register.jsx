@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
-import { FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import UseTitle from "../Hooks/UseTitle";
@@ -11,6 +11,9 @@ import UseTitle from "../Hooks/UseTitle";
 const Register = () => {
   UseTitle("Register");
   const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,7 +52,31 @@ const Register = () => {
   };
 
   const handleGoogleRegister = () => {
-    signInWithPopup(auth, new GoogleAuthProvider())
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleFacebookRegister = () => {
+    signInWithPopup(auth, facebookProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleGithubRegister = () => {
+    signInWithPopup(auth, githubProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -144,11 +171,23 @@ const Register = () => {
               </div>
               <div className="divider">OR Register With</div>
               <div className="card-body justify-center mx-auto">
-                <button
-                  onClick={handleGoogleRegister}
-                  className="btn btn-primary">
-                  <FaGoogle></FaGoogle>
-                </button>
+                <div>
+                  <button
+                    onClick={handleGoogleRegister}
+                    className="btn btn-primary mr-3">
+                    <FaGoogle></FaGoogle>
+                  </button>
+                  <button
+                    onClick={handleFacebookRegister}
+                    className="btn btn-primary mr-3">
+                    <FaFacebook></FaFacebook>
+                  </button>
+                  <button
+                    onClick={handleGithubRegister}
+                    className="btn btn-primary">
+                    <FaGithub></FaGithub>
+                  </button>
+                </div>
               </div>
             </div>
           </form>

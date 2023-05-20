@@ -11,12 +11,19 @@ const Home = () => {
   return (
     <div>
       <div
-        className="hero min-h-screen"
-        style={{
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        className="hero min-h-screen" style=
+        {{
           backgroundImage: `url("https://i.ebayimg.com/images/g/G4sAAOSw6ZBdWHLz/s-l1600.jpg")`,
-        }}>
-        <div className="hero-overlay bg-opacity-70"></div>
-        <div className="hero-content text-left text-neutral-content lg:mr-auto lg:ml-24">
+        }}
+        ><div className="hero-overlay bg-opacity-70"></div>
+        <div
+          className="hero-content text-left text-neutral-content lg:mr-auto lg:ml-24"
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Welcome</h1>
             <h1 className="mb-5 text-5xl font-bold">To Avengers Shop</h1>
@@ -33,8 +40,8 @@ const Home = () => {
       </div>
       <Gallery />
       <Category />
-      <Inspire/>
-      <ClientReview/>
+      <Inspire />
+      <ClientReview />
     </div>
   );
 };

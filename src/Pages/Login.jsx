@@ -1,19 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
-
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
-import { FaGoogle } from "react-icons/fa";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../Firebase/firebase.config";
-import { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import UseTitle from "../Hooks/UseTitle";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
   UseTitle("Login");
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,6 +46,30 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleFacebookLogin = () => {
+    signInWithPopup(auth, facebookProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    signInWithPopup(auth, githubProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -97,7 +121,8 @@ const Login = () => {
                     />
                     <div
                       className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                      onClick={() => setShowPassword(!showPassword)}>
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
                       {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
                     </div>
                   </div>
@@ -116,9 +141,26 @@ const Login = () => {
               </div>
               <div className="divider">OR Login With</div>
               <div className="card-body justify-center mx-auto">
-                <button onClick={handleGoogleLogin} className="btn btn-primary">
-                  <FaGoogle></FaGoogle>
-                </button>
+                <div>
+                  <button
+                    onClick={handleGoogleLogin}
+                    className="btn btn-primary mr-3"
+                  >
+                    <FaGoogle />
+                  </button>
+                  <button
+                    onClick={handleFacebookLogin}
+                    className="btn btn-primary mr-3"
+                  >
+                    <FaFacebook />
+                  </button>
+                  <button
+                    onClick={handleGithubLogin}
+                    className="btn btn-primary"
+                  >
+                    <FaGithub />
+                  </button>
+                </div>
               </div>
             </div>
           </form>
