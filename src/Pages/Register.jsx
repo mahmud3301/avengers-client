@@ -89,10 +89,10 @@ const Register = () => {
 
   return (
     <div>
-      <h1 className="text-5xl font-bold text-center mt-28">Register now!</h1>
+      <h1 data-aos="fade-up" className="text-5xl font-bold text-center mt-28"><span className="text-primary">Register</span> now!</h1>
       <div className="hero bg-[#000] mb-24">
         <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
+          <div data-aos="fade-right" className="text-center lg:text-left">
             <p className="w-full h-full">
               <img
                 className="w-96 mb-8"
@@ -101,7 +101,7 @@ const Register = () => {
               />
             </p>
           </div>
-          <form className="w-full" onSubmit={handleRegister}>
+          <form data-aos="fade-left" className="w-full" onSubmit={handleRegister}>
             <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-[#171717]">
               <div className="card-body">
                 <div className="form-control">

@@ -45,8 +45,9 @@ const Category = () => {
 
   return (
     <div id="/category" className="container mt-16 mb-24 justify-center text-center mx-auto">
+      <h1 data-aos="fade-up" className="mb-12 font-bold text-3xl">Shop By <span className="text-primary">Category</span></h1>
       <div className="justify-center mx-auto text-center">
-        <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
+        <Tabs activeClassName="" selectedIndex={selectedTab} onSelect={handleTabSelect}>
           <TabList className="tabs justify-center text-center mx-auto">
             <Tab  data-aos="zoom-in-left" className="tab">Iron Man Toys</Tab>
             <Tab  data-aos="zoom-in-left" className="tab">Spider Man Toys</Tab>
@@ -54,7 +55,7 @@ const Category = () => {
           </TabList>
 
           <TabPanel>
-            <h2 className="text-3xl font-bold mt-16 mb-12">Iron Man <span className="text-primary">Toys</span></h2>
+            <h2 className="text-2xl font-bold mt-16 mb-12">Iron Man <span className="text-primary">Toys</span></h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
               {toysData[0]?.ironManToys?.map((item, index) => (
                 <div key={index} className="hero rounded-2xl bg-[#101010]">
@@ -84,7 +85,7 @@ const Category = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <h2 className="text-3xl font-bold mt-16 mb-12">Spider Man <span className="text-primary">Toys</span></h2>
+            <h2 className="text-2xl font-bold mt-16 mb-12">Spider Man <span className="text-primary">Toys</span></h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2 container justify-center mx-auto">
               {toysData[1]?.spiderManToys?.map((item, index) => (
                 <div key={index} className="hero rounded-2xl bg-[#101010]">
@@ -114,7 +115,7 @@ const Category = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <h2 className="text-3xl font-bold mt-16 mb-12">Groot <span className="text-primary">Toys</span></h2>
+            <h2 className="text-2xl font-bold mt-16 mb-12">Groot <span className="text-primary">Toys</span></h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
               {toysData[2]?.grootToys?.map((item, index) => (
                 <div key={index} className="hero rounded-2xl bg-[#101010]">

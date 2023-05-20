@@ -121,8 +121,8 @@ const Header = () => {
               <button>
                 <img
                   className="w-10 mt-2 rounded-xl"
-                  src={user?.photoURL}
-                  alt={user?.photoURL}
+                  src={user.photoURL}
+                  alt={user.photoURL}
                 />
               </button>
             </div>

@@ -4,8 +4,10 @@ const Blogs = () => {
   UseTitle("Blogs");
   return (
     <div className="p-24">
+       <h1 data-aos="fade-down" className="font-bold text-center mb-16 text-3xl">Blog <span className="text-primary">Page</span></h1>
       <div
         tabIndex={0}
+        data-aos="fade-up"
         className="mt-5 collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
         <div className="collapse-title text-xl font-medium">
           What is an access token and refresh token? How do they work and where
@@ -30,6 +32,7 @@ const Blogs = () => {
       </div>
       <div
         tabIndex={0}
+        data-aos="fade-up"
         className="mt-5 collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
         <div className="collapse-title text-xl font-medium">
           Compare SQL and NoSQL databases?
@@ -45,6 +48,7 @@ const Blogs = () => {
       </div>
       <div
         tabIndex={0}
+        data-aos="fade-up"
         className="mt-5 collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
         <div className="collapse-title text-xl font-medium">
           What is express js? What is Nest JS ?
@@ -72,6 +76,7 @@ const Blogs = () => {
       </div>
       <div
         tabIndex={0}
+        data-aos="fade-up"
         className="mt-5 collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
         <div className="collapse-title text-xl font-medium">
           What is an access token and refresh token? How do they work and where

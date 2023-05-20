@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { ImFacebook, ImGithub, ImYoutube } from "react-icons/im";
 import { NavLink } from "react-router-dom";
 const Footer = () => {
@@ -31,17 +32,17 @@ const Footer = () => {
           <span className="footer-title mt-0 lg:mt-[69%]">Social</span>
           <div className="grid grid-flow-col gap-0">
             <div className="btn-circle text-xl">
-              <a href="https://www.facebook.com/mahmudulhasan13.1.8.9">
+              <a target="_blank" href="https://www.facebook.com/mahmudulhasan13.1.8.9">
                 <ImFacebook />
               </a>
             </div>
             <div className="btn-circle text-xl">
-              <a href="https://github.com/mahmud3301">
+              <a target="_blank" href="https://github.com/mahmud3301">
                 <ImGithub />
               </a>
             </div>
             <div className="btn-circle text-xl">
-              <a href="https://www.youtube.com/@programmer-mahmud">
+              <a target="_blank" href="https://www.youtube.com/@programmer-mahmud">
                 <ImYoutube />
               </a>
             </div>

@@ -3,7 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 import Gallery from "./Gallery";
 import Category from "./Category";
 import UseTitle from "../Hooks/UseTitle";
-import Inspire from "./Inspire";
+import TopCollections from "./TopCollections";
 import ClientReview from "./ClientReview";
 
 const Home = () => {
@@ -40,7 +40,7 @@ const Home = () => {
       </div>
       <Gallery />
       <Category />
-      <Inspire />
+      <TopCollections />
       <ClientReview />
     </div>
   );

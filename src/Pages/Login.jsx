@@ -82,10 +82,10 @@ const Login = () => {
 
   return (
     <div>
-      <h1 className="text-5xl font-bold text-center mt-28">Login now!</h1>
+      <h1 data-aos="fade-down" className="text-5xl font-bold text-center mt-28"><span className="text-primary">Login</span> now!</h1>
       <div className="hero bg-[#000]">
         <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
+          <div data-aos="fade-left" className="text-center lg:text-left">
             <p className="py-6">
               <img
                 className="w-96 mb-8"
@@ -94,7 +94,7 @@ const Login = () => {
               />
             </p>
           </div>
-          <form className="w-full" onSubmit={handleLogin}>
+          <form data-aos="fade-right" className="w-full" onSubmit={handleLogin}>
             <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-[#171717]">
               <div className="card-body">
                 <div className="form-control">
