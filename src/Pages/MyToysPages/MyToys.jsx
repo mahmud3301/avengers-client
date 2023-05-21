@@ -16,12 +16,6 @@ const MyToys = () => {
   const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
-    fetch(`http://localhost:7000/my-toys/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setMyToys(data));
-  }, [user]);
-
-  useEffect(() => {
     fetch(`http://localhost:7000/my-toys/${user.email}?sort=${sortOrder}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
@@ -109,16 +103,34 @@ const MyToys = () => {
         className="font-bold text-center mt-12 mb-16 text-3xl">
         My <span className="text-primary">Toys</span>
       </h1>
-      <div className="text-center mb-16">
-        <button className="btn btn-primary mx-auto mr-0 lg:mr-3" onClick={() => handleSort("desc")}>
-          <BiUpArrowAlt/>
-          Expensive First
-        </button>
-        <button className="btn btn-primary mx-auto mt-3 lg:mt-0" onClick={() => handleSort("asc")}>
-          <BiDownArrowAlt/>
-        Low Expensive First
-        </button>
-      </div>
+      {myToys.length > 0 && sortOrder === "asc" ? (
+        <div className="text-center mb-16">
+          <button
+            className="btn text-xl font-bold btn-primary mx-auto"
+            onClick={() => handleSort("desc")}>
+            <BiUpArrowAlt /> High expense
+          </button>
+          <button
+            className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
+            onClick={() => handleSort("asc")}>
+            <BiDownArrowAlt /> Low expense
+          </button>
+        </div>
+      ) : (
+        <div className="text-center mb-16">
+          <button
+            className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
+            onClick={() => handleSort("desc")}>
+            <BiUpArrowAlt /> High expense
+          </button>
+          <button
+            className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
+            onClick={() => handleSort("asc")}>
+            <BiDownArrowAlt /> Low expense
+          </button>
+        </div>
+      )}
+
       <div data-aos="fade-up" className="overflow-x-auto">
         {myToys.length > 0 ? (
           <table className="table table-compact w-full text-center">
@@ -167,12 +179,11 @@ const MyToys = () => {
           </table>
         ) : (
           <p className="text-center text-2xl">
-            You don't have any toys yet.{" "}
-            <span className="text-primary">Please add some.</span>
+            You don't have any toys yet.
+            <span className="text-primary"> Please add some.</span>
           </p>
         )}
       </div>
-
       {selectedToy && (
         <MyToysDetails selectedToy={selectedToy} closeModal={closeModal} />
       )}
