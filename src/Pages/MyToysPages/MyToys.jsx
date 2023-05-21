@@ -7,18 +7,30 @@ import { MdDeleteForever } from "react-icons/md";
 import MyToysDetails from "./MyToysDetails";
 import Swal from "sweetalert2";
 import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
+import MyToysUpdate from "./MyToysUpdate";
 
 const MyToys = () => {
   UseTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [selectedToy, setSelectedToy] = useState(null);
+  const [selectedUpdateToy, setSelectedUpdateToy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
-    fetch(`https://avengers-server.vercel.app/my-toys/${user.email}?sort=${sortOrder}`)
-      .then((res) => res.json())
-      .then((data) => setMyToys(data));
+    const fetchMyToys = async () => {
+      try {
+        const response = await fetch(
+          `https://avengers-server.vercel.app/my-toys/${user.email}?sort=${sortOrder}`
+        );
+        const data = await response.json();
+        setMyToys(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchMyToys();
   }, [user, sortOrder]);
 
   const handleSort = (order) => {
@@ -33,7 +45,57 @@ const MyToys = () => {
     setSelectedToy(null);
   };
 
+  const updateOpenModal = (toy) => {
+    setSelectedUpdateToy(toy);
+  };
 
+  const updateCloseModal = () => {
+    setSelectedUpdateToy(null);
+  };
+
+  const handleUpdate = (toy) => {
+    const updatedToy = {
+      ...toy,
+      quantity: toy.quantity - 1, // Decrease the quantity by 1
+    };
+
+    fetch(`http://localhost:7000/my-toys/${toy._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedToy),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          const updatedToys = myToys.map((t) =>
+            t._id === toy._id ? updatedToy : t
+          );
+          setMyToys(updatedToys);
+          Swal.fire({
+            background: "#101010",
+            position: "center",
+            icon: "success",
+            title: "Toys Updated Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          background: "#101010",
+          position: "center",
+          icon: "error",
+          title: "Something went wrong",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
 
   const handleDelete = (toy) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -68,9 +130,7 @@ const MyToys = () => {
                   "Your item has been deleted.",
                   "success"
                 );
-                const remaining = myToys.filter(
-                  (chocolate) => chocolate._id !== toy._id
-                );
+                const remaining = myToys.filter((toys) => toys._id !== toy._id);
                 setMyToys(remaining);
               } else {
                 swalWithBootstrapButtons.fire(
@@ -105,7 +165,7 @@ const MyToys = () => {
         className="font-bold text-center mt-12 mb-16 text-3xl">
         My <span className="text-primary">Toys</span>
       </h1>
-      {myToys.length > 0 ? (
+      {myToys.length > 0 && (
         <div className="text-center mb-16">
           {sortOrder === "asc" ? (
             <>
@@ -135,7 +195,7 @@ const MyToys = () => {
             </>
           )}
         </div>
-      ) : null}
+      )}
 
       <div data-aos="fade-up" className="overflow-x-auto">
         {myToys.length > 0 ? (
@@ -170,7 +230,7 @@ const MyToys = () => {
                         View Details
                       </button>
                       <button className="btn btn-primary btn-square ml-2 text-xl">
-                        <FiEdit3  />
+                        <FiEdit3 onClick={() => updateOpenModal(toy)} />
                       </button>
                       <button
                         className="btn btn-primary btn-square ml-2 text-xl"
@@ -192,6 +252,13 @@ const MyToys = () => {
       </div>
       {selectedToy && (
         <MyToysDetails selectedToy={selectedToy} closeModal={closeModal} />
+      )}
+      {selectedUpdateToy && (
+        <MyToysUpdate
+          selectedUpdateToy={selectedUpdateToy}
+          updateCloseModal={updateCloseModal}
+          handleUpdate={handleUpdate}
+        />
       )}
     </div>
   );

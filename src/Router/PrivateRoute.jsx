@@ -5,7 +5,7 @@ import {useLocation} from 'react-router-dom'
 
 const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext);
-    const location = useLocation()
+    const location = useLocation();
 
     if(loading) {
         return <div className='items-center min-h-screen'><progress className="progress progress-primary mx-auto justify-center items-center mt-[25%]  w-100"></progress></div>

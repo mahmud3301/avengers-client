@@ -32,6 +32,7 @@ const Category = () => {
     setSelectedToy(toy);
     setIsModalOpen(true);
   };
+  
 
   const handleTabSelect = (index) => {
     setSelectedTab(index);
