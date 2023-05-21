@@ -11,11 +11,12 @@ const CategoryDetails = ({ selectedToy, setIsModalOpen }) => {
             </label>
             <div className="grid grid-cols-1 lg:grid-cols-2 mt-12">
               <img
+              data-aos="flip-up"
                 src={selectedToy.picture}
                 alt={selectedToy.name}
                 className="rounded-lg shadow-2xl"
               />
-              <div className="justify-center my-auto ml-5 mt-5 lg:mt-0">
+              <div data-aos="flip-down" className="justify-center my-auto ml-5 mt-5 lg:mt-0">
                 <h1 className="text-xl">
                   <span className="font-bold">Name: </span>
                   {selectedToy.name}

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const TopCollections = () => {
   return (
-    <div className="container mx-auto justify-center">
+    <div className="px-28 mx-auto justify-center">
       <h1
         data-aos="fade-down-right"
         className="text-3xl font-bold text-center mb-12">

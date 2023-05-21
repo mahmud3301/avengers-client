@@ -17,14 +17,14 @@ const AllToys = () => {
   const from = location.state?.from?.pathname || "/login";
 
   useEffect(() => {
-    fetch("http://localhost:7000/all-toys-data")
+    fetch("https://avengers-server.vercel.app/all-toys-data")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:7000/all-toys-data/${searchText}`)
+    fetch(`https://avengers-server.vercel.app/all-toys-data/${searchText}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }
@@ -71,7 +71,7 @@ const AllToys = () => {
           <AiOutlineSearch />
         </button>
       </div>
-      <div data-aos="fade-up" className="overflow-x-auto">
+      <div data-aos="" className="overflow-x-auto">
         <table className="table table-compact w-full text-center">
           <thead>
             <tr>

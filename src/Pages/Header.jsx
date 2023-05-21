@@ -13,27 +13,26 @@ const Header = () => {
 
   return (
     <div>
-      <div className="navbar bg-[#101010]">
+      <nav className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <button className="btn btn-ghost btn-sm lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
+                  strokeWidth={2}
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            </button>
+            <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>
                 <NavLink exact to="/" activeClassName="">
                   Home
@@ -65,7 +64,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <NavLink to="/" className="btn btn-ghost btn-square mt-1 ml-3">
               <div className="w-20 rounded-full">
                 <img
@@ -76,8 +75,9 @@ const Header = () => {
             </NavLink>
             <NavLink
               to="/"
-              className="btn btn-ghost normal-case text-xl mt-1 text-[#101010] lg:text-white"
-              activeClassName="">
+              className="font-bold text-xl mt-0 ml-3 lg:mt-3 text-[#101010] lg:text-white"
+              activeClassName=""
+            >
               Avengers Shop
             </NavLink>
           </div>
@@ -122,15 +122,13 @@ const Header = () => {
                 <img
                   className="w-10 mt-2 rounded-xl"
                   src={user.photoURL}
-                  alt={user.photoURL}
+                  alt={user.displayName}
                 />
               </button>
             </div>
           )}
           {user ? (
-            <button
-              className="btn btn-primary mr-3 ml-3"
-              onClick={handleLogOut}>
+            <button className="btn btn-primary mr-3 ml-3" onClick={handleLogOut}>
               Logout
             </button>
           ) : (
@@ -139,7 +137,7 @@ const Header = () => {
             </NavLink>
           )}
         </div>
-      </div>
+      </nav>
     </div>
   );
 };

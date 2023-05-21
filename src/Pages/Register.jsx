@@ -1,7 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  updateProfile
+} from "firebase/auth";
 import app from "../Firebase/firebase.config";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -22,6 +29,16 @@ const Register = () => {
   const [errorMassage, setErrorMassage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  useEffect(() => {
+    // Check if user is already logged in and has a profile
+    if (auth.currentUser) {
+      const { displayName, photoURL } = auth.currentUser;
+      if (displayName && photoURL) {
+        navigate(from, { replace: true });
+      }
+    }
+  }, [auth.currentUser, navigate, from]);
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -29,7 +46,6 @@ const Register = () => {
     const url = form.url.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, url, email, password);
 
     if (!name || !email || !password) {
       setError("Please fill in all the fields");
@@ -43,8 +59,14 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser);
-        navigate(from, { replace: true });
+        updateProfile(createdUser, { displayName: name, photoURL: url })
+          .then(() => {
+            console.log("Profile updated!");
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            console.log("Error updating profile:", error);
+          });
       })
       .catch((error) => {
         console.log(error);

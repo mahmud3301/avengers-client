@@ -16,7 +16,7 @@ const MyToys = () => {
   const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
-    fetch(`http://localhost:7000/my-toys/${user.email}?sort=${sortOrder}`)
+    fetch(`https://avengers-server.vercel.app/my-toys/${user.email}?sort=${sortOrder}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user, sortOrder]);
@@ -32,6 +32,8 @@ const MyToys = () => {
   const closeModal = () => {
     setSelectedToy(null);
   };
+
+
 
   const handleDelete = (toy) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -55,7 +57,7 @@ const MyToys = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:7000/my-toys/${user.email}`, {
+          fetch(`https://avengers-server.vercel.app/my-toys/${user.email}`, {
             method: "DELETE",
           })
             .then((response) => response.json())
@@ -103,33 +105,37 @@ const MyToys = () => {
         className="font-bold text-center mt-12 mb-16 text-3xl">
         My <span className="text-primary">Toys</span>
       </h1>
-      {myToys.length > 0 && sortOrder === "asc" ? (
+      {myToys.length > 0 ? (
         <div className="text-center mb-16">
-          <button
-            className="btn text-xl font-bold btn-primary mx-auto"
-            onClick={() => handleSort("desc")}>
-            <BiUpArrowAlt /> High expense
-          </button>
-          <button
-            className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
-            onClick={() => handleSort("asc")}>
-            <BiDownArrowAlt /> Low expense
-          </button>
+          {sortOrder === "asc" ? (
+            <>
+              <button
+                className="btn text-xl font-bold btn-primary mx-auto"
+                onClick={() => handleSort("desc")}>
+                <BiUpArrowAlt /> High expense
+              </button>
+              <button
+                className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
+                onClick={() => handleSort("asc")}>
+                <BiDownArrowAlt /> Low expense
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
+                onClick={() => handleSort("desc")}>
+                <BiUpArrowAlt /> High expense
+              </button>
+              <button
+                className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
+                onClick={() => handleSort("asc")}>
+                <BiDownArrowAlt /> Low expense
+              </button>
+            </>
+          )}
         </div>
-      ) : (
-        <div className="text-center mb-16">
-          <button
-            className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
-            onClick={() => handleSort("desc")}>
-            <BiUpArrowAlt /> High expense
-          </button>
-          <button
-            className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
-            onClick={() => handleSort("asc")}>
-            <BiDownArrowAlt /> Low expense
-          </button>
-        </div>
-      )}
+      ) : null}
 
       <div data-aos="fade-up" className="overflow-x-auto">
         {myToys.length > 0 ? (
@@ -164,7 +170,7 @@ const MyToys = () => {
                         View Details
                       </button>
                       <button className="btn btn-primary btn-square ml-2 text-xl">
-                        <FiEdit3 />
+                        <FiEdit3  />
                       </button>
                       <button
                         className="btn btn-primary btn-square ml-2 text-xl"
