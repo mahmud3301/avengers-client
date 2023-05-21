@@ -21,7 +21,7 @@ const MyToys = () => {
     const fetchMyToys = async () => {
       try {
         const response = await fetch(
-          `https://avengers-server.vercel.app/my-toys/${user.email}?sort=${sortOrder}`
+          `https://avengers-server-mahmud3301.vercel.app/my-toys/${user.email}?sort=${sortOrder}`
         );
         const data = await response.json();
         setMyToys(data);
@@ -119,7 +119,7 @@ const MyToys = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://avengers-server.vercel.app/my-toys/${user.email}`, {
+          fetch(`https://avengers-server-mahmud3301.vercel.app/my-toys/${user.email}`, {
             method: "DELETE",
           })
             .then((response) => response.json())

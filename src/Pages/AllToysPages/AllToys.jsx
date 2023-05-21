@@ -17,14 +17,14 @@ const AllToys = () => {
   const from = location.state?.from?.pathname || "/login";
 
   useEffect(() => {
-    fetch("https://avengers-server.vercel.app/all-toys-data")
+    fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    fetch(`https://avengers-server.vercel.app/all-toys-data/${searchText}`)
+    fetch(`https://avengers-server-mahmud3301.vercel.app/all-toys-data/${searchText}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }

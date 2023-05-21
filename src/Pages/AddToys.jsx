@@ -30,7 +30,7 @@ const AddToys = () => {
       seller,
       sellerEmail,
     };
-    fetch("https://avengers-server.vercel.app/all-toys-data", {
+    fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data", {
       method: "POST",
       headers: {
         "content-type": "application/json",
