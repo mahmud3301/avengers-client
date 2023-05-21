@@ -6,18 +6,30 @@ import { FiEdit3 } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
 import MyToysDetails from "./MyToysDetails";
 import Swal from "sweetalert2";
+import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 
 const MyToys = () => {
   UseTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [selectedToy, setSelectedToy] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     fetch(`http://localhost:7000/my-toys/${user.email}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user]);
+
+  useEffect(() => {
+    fetch(`http://localhost:7000/my-toys/${user.email}?sort=${sortOrder}`)
+      .then((res) => res.json())
+      .then((data) => setMyToys(data));
+  }, [user, sortOrder]);
+
+  const handleSort = (order) => {
+    setSortOrder(order);
+  };
 
   const openModal = (toy) => {
     setSelectedToy(toy);
@@ -97,6 +109,16 @@ const MyToys = () => {
         className="font-bold text-center mt-12 mb-16 text-3xl">
         My <span className="text-primary">Toys</span>
       </h1>
+      <div className="text-center mb-16">
+        <button className="btn btn-primary mx-auto mr-0 lg:mr-3" onClick={() => handleSort("desc")}>
+          <BiUpArrowAlt/>
+          Expensive First
+        </button>
+        <button className="btn btn-primary mx-auto mt-3 lg:mt-0" onClick={() => handleSort("asc")}>
+          <BiDownArrowAlt/>
+        Low Expensive First
+        </button>
+      </div>
       <div data-aos="fade-up" className="overflow-x-auto">
         {myToys.length > 0 ? (
           <table className="table table-compact w-full text-center">
