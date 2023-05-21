@@ -43,19 +43,19 @@ const AddToys = () => {
         form.reset();
         if (data.acknowledged) {
           Swal.fire({
+            background: "#101010",
             position: "center",
             icon: "success",
             title: "Toys Added Successfully",
-            background: "#101010",
             showConfirmButton: false,
             timer: 1500,
           });
         } else {
           Swal.fire({
+            background: "#101010",
             position: "center",
             icon: "error",
             title: "Something went wrong",
-            background: "#101010",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -64,7 +64,7 @@ const AddToys = () => {
   };
 
   return (
-    <div className="container justify-center mx-auto">
+    <div className="container justify-center mx-auto p-12">
       <div>
         <h2
           data-aos="fade-left"
@@ -156,7 +156,7 @@ const AddToys = () => {
               <label className="label">Price</label>
               <div>
               <input
-                type="text"
+                type="number"
                 id="price"
                 className="input w-80 md:w-full lg:w-full"
                 required
@@ -169,7 +169,7 @@ const AddToys = () => {
                 Rating
               </label>
               <input
-                type="text"
+                type="number"
                 id="rating"
                 className="input w-80 md:w-full lg:w-full"
                 required
@@ -181,7 +181,7 @@ const AddToys = () => {
                 Available Quantity
               </label>
               <input
-                type="text"
+                type="number"
                 id="quantity"
                 className="input w-80 md:w-full lg:w-full"
                 required

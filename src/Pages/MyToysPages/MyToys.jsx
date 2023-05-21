@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { FiEdit3 } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
 import MyToysDetails from "./MyToysDetails";
-
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   UseTitle("My Toys");
@@ -27,12 +27,74 @@ const MyToys = () => {
     setSelectedToy(null);
   };
 
+  const handleDelete = (toy) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger mr-5",
+      },
+      buttonsStyling: true,
+      background: "#101010",
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:7000/my-toys/${user.email}`, {
+            method: "DELETE",
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.deletedCount > 0) {
+                swalWithBootstrapButtons.fire(
+                  "Deleted!",
+                  "Your item has been deleted.",
+                  "success"
+                );
+                const remaining = myToys.filter(
+                  (chocolate) => chocolate._id !== toy._id
+                );
+                setMyToys(remaining);
+              } else {
+                swalWithBootstrapButtons.fire(
+                  "Failed to delete",
+                  "An error occurred while deleting the item.",
+                  "error"
+                );
+              }
+            })
+            .catch((error) => {
+              swalWithBootstrapButtons.fire(
+                "Failed to delete",
+                "An error occurred while deleting the item.",
+                "error"
+              );
+              console.log(error);
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your item is safe :)",
+            "info"
+          );
+        }
+      });
+  };
+
   return (
     <div className="px-16">
       <h1
         data-aos="fade-down"
-        className="font-bold text-center mt-12 mb-16 text-3xl"
-      >
+        className="font-bold text-center mt-12 mb-16 text-3xl">
         My <span className="text-primary">Toys</span>
       </h1>
       <div data-aos="fade-up" className="overflow-x-auto">
@@ -50,11 +112,11 @@ const MyToys = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody data-aos="fade-left">
               {myToys.map((toy, index) => (
                 <tr key={toy._id}>
-                  <td></td>
-                  <td>{index + 1}</td>
+                  <th></th>
+                  <th>{index + 1}</th>
                   <td className="font-bold">{toy.seller}</td>
                   <td>{toy.toyName}</td>
                   <td>{toy.subCategory}</td>
@@ -64,14 +126,15 @@ const MyToys = () => {
                     <div className="flex justify-center">
                       <button
                         className="btn btn-primary"
-                        onClick={() => openModal(toy)}
-                      >
+                        onClick={() => openModal(toy)}>
                         View Details
                       </button>
                       <button className="btn btn-primary btn-square ml-2 text-xl">
                         <FiEdit3 />
                       </button>
-                      <button className="btn btn-primary btn-square ml-2 text-xl">
+                      <button
+                        className="btn btn-primary btn-square ml-2 text-xl"
+                        onClick={() => handleDelete(toy)}>
                         <MdDeleteForever />
                       </button>
                     </div>
@@ -89,7 +152,7 @@ const MyToys = () => {
       </div>
 
       {selectedToy && (
-        <MyToysDetails selectedToy={selectedToy} closeModal={closeModal}/>
+        <MyToysDetails selectedToy={selectedToy} closeModal={closeModal} />
       )}
     </div>
   );

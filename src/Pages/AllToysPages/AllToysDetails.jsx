@@ -1,65 +1,46 @@
-
-const AllToysDetails = ({selectedToy, closeModal}) => {
-
+const AllToysDetails = ({ selectedToy, closeModal }) => {
   return (
     <div>
-      <div className="p-56 fixed inset-0 flex items-center justify-center z-50">
-        <div className="bg-[#101010] rounded-lg">
-          <div className="lg:flex justify-center">
-            <img
-              data-aos="fade-up"
-              src={selectedToy.pictureUrl}
-              alt={selectedToy.toyName}
-              className="rounded-lg shadow-2xl max-w-sm ml-16 mt-24"
-            />
-
-            <div data-aos="fade-down" className="ml-0 mt-24 lg:ml-32">
-              <h1 className="text-xl">
-                <span className="font-bold">Toy Name: </span>
-                {selectedToy.toyName}
-              </h1>
-
-              <h1 className="text-xl mt-8 ">
-                <span className="font-bold">Price: </span> {selectedToy.price}
-              </h1>
-
-              <h1 className="text-xl mt-3">
-                <span className="font-bold">Ratings: </span>{" "}
-                {selectedToy.rating}
-              </h1>
-
-              <h1 className="text-xl mt-3">
-                <span className="font-bold">Sub Category: </span>
-                {selectedToy.subCategory}
-              </h1>
-
-              <h1 className="text-xl mt-3">
-                <span className="font-bold">Seller: </span>
-                {selectedToy.seller}
-              </h1>
-
-              <h1 className="text-xl mt-3">
-                <span className="font-bold">Seller Email: </span>
-                {selectedToy.sellerEmail && selectedToy.sellerEmail.length > 23
-                  ? selectedToy.sellerEmail.slice(0, 25) + "..."
-                  : selectedToy.sellerEmail}
-              </h1>
-
-              <h1 className="text-xl mt-3">
-                <span className="font-bold">Quantity: </span>
-                {selectedToy.availableQuantity}
-              </h1>
-
-              <p className="mt-3">
-                <span className="font-bold">Description: </span>
-                {selectedToy.description}
-              </p>
+      <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="modal modal-open">
+          <div className="modal-box w-11/12 max-w-2xl lg:max-w-4xl">
+          <label onClick={closeModal} className="btn btn-sm btn-circle btn-primary absolute right-8 top-6">✕</label>
+            <div className="grid grid-cols-1 lg:grid-cols-2 mt-12">
+              <img
+                src={selectedToy.pictureUrl}
+                alt={selectedToy.toyName}
+                className="rounded-lg shadow-2xl"
+              />
+              <div className="justify-center my-auto ml-5 mt-5 lg:mt-0">
+                <h1 className="text-xl">
+                  <span className="font-bold">Name: </span>
+                  {selectedToy.toyName}
+                </h1>
+                <h1 className="text-xl mt-8 ">
+                  <span className="font-bold">Price: </span> {selectedToy.price}
+                </h1>
+                <h1 className="text-xl mt-3">
+                  <span className="font-bold">Ratings: </span>{" "}
+                  {selectedToy.rating}
+                </h1>
+                <h1 className="text-xl mt-3">
+                  <span className="font-bold">Seller: </span>{" "}
+                  {selectedToy.seller}
+                </h1>
+                <h1 className="text-xl mt-3">
+                  <span className="font-bold">Seller Email: </span>
+                  {selectedToy.sellerEmail}
+                </h1>
+                <h1 className="text-xl mt-3">
+                  <span className="font-bold">Quantity: </span>
+                  {selectedToy.availableQuantity}
+                </h1>
+                <p className="mt-3">
+                  <span className="font-bold">Description: </span>
+                  {selectedToy.description}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="mx-auto justify-center text-center mb-12 mt-12">
-            <button className="btn btn-primary" onClick={closeModal}>
-              Go Back
-            </button>
           </div>
         </div>
       </div>

@@ -1,13 +1,20 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import UseTitle from "../../Hooks/UseTitle";
 import { useState } from "react";
 import { AiOutlineSearch } from 'react-icons/ai'
 import AllToysDetails from "./AllToysDetails";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AllToys = () => {
   UseTitle("All Toys");
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/login";
 
   useEffect(() => {
     fetch("http://localhost:7000/all-toys-data")
@@ -25,6 +32,16 @@ const AllToys = () => {
   const [selectedToy, setSelectedToy] = useState(null);
 
   const openModal = (toy) => {
+    if (!user) {
+      Swal.fire({
+        icon: "error",
+        background: "#101010",
+        text: "You have to log in first to view details",
+      }).then(() => {
+        navigate(from, { replace: true });
+      });
+      return;
+    }
     setSelectedToy(toy);
   };
 
@@ -54,7 +71,7 @@ const AllToys = () => {
           <AiOutlineSearch />
         </button>
       </div>
-      <div className="overflow-x-auto">
+      <div data-aos="fade-up" className="overflow-x-auto">
         <table className="table table-compact w-full text-center">
           <thead>
             <tr>
