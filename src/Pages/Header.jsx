@@ -75,7 +75,7 @@ const Header = () => {
             </NavLink>
             <NavLink
               to="/"
-              className="font-bold text-xl mt-0 ml-3 lg:mt-3 text-[#101010] lg:text-white"
+              className="font-bold text-xl ml-3 text-[#000000] lg:text-white"
               activeClassName=""
             >
               Avengers Shop

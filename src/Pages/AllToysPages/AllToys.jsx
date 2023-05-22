@@ -52,13 +52,13 @@ const AllToys = () => {
   return (
     <div className="px-16">
       <h1
-        data-aos="fade-right"
+        data-aos="fade-down"
         className="font-bold text-center mt-12 mb-16 text-3xl"
       >
         All <span className="text-primary">Toys</span>
       </h1>
       <div
-        data-aos="fade-left"
+        data-aos="fade-down"
         className="flex mb-16 mx-auto justify-center w-1/2"
       >
         <input
@@ -71,7 +71,7 @@ const AllToys = () => {
           <AiOutlineSearch />
         </button>
       </div>
-      <div data-aos="" className="overflow-x-auto">
+      <div data-aos="fade-down" className="overflow-x-auto">
         <table className="table table-compact w-full text-center">
           <thead>
             <tr>
@@ -85,7 +85,7 @@ const AllToys = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody data-aos="fade-left">
+          <tbody data-aos="fade-down">
             {toys.map((toy, index) => (
               <tr key={toy._id}>
                 <th></th>

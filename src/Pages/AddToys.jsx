@@ -13,7 +13,7 @@ const AddToys = () => {
     const toyName = form.elements.name.value;
     const price = form.elements.price.value;
     const rating = form.elements.rating.value;
-    const availableQuantity = form.elements.quantity.value;
+    const availableQuantity = form.elements.availableQuantity.value;
     const description = form.elements.description.value;
     const pictureUrl = form.elements.pictureUrl.value;
     const subCategory = form.elements.subCategory.value;
@@ -30,6 +30,7 @@ const AddToys = () => {
       seller,
       sellerEmail,
     };
+    console.log(data);
     fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data", {
       method: "POST",
       headers: {
@@ -155,13 +156,13 @@ const AddToys = () => {
             <div data-aos="fade-down" className="mb-4 ml-6 lg:ml-0">
               <label className="label">Price</label>
               <div>
-              <input
-                type="number"
-                id="price"
-                className="input w-80 md:w-full lg:w-full"
-                required
-                placeholder="Price"
-              />
+                <input
+                  type="number"
+                  id="price"
+                  className="input w-80 md:w-full lg:w-full"
+                  required
+                  placeholder="Price"
+                />
               </div>
             </div>
             <div data-aos="fade-up" className="mb-4 ml-6 lg:ml-0">
@@ -177,12 +178,13 @@ const AddToys = () => {
               />
             </div>
             <div data-aos="fade-down" className="mb-4 ml-6 lg:ml-0">
-              <label htmlFor="quantity" className="label">
+              <label htmlFor="availableQuantity" className="label">
                 Available Quantity
               </label>
               <input
+                name="availableQuantity"
                 type="number"
-                id="quantity"
+                id="availableQuantity"
                 className="input w-80 md:w-full lg:w-full"
                 required
                 placeholder="Available Quantity"

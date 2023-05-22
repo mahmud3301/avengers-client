@@ -13,6 +13,7 @@ const MyToys = () => {
   UseTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
+  console.log(myToys);
   const [selectedToy, setSelectedToy] = useState(null);
   const [selectedUpdateToy, setSelectedUpdateToy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -21,7 +22,7 @@ const MyToys = () => {
     const fetchMyToys = async () => {
       try {
         const response = await fetch(
-          `https://avengers-server-mahmud3301.vercel.app/my-toys/${user.email}?sort=${sortOrder}`
+          `http://localhost:7000/my-toys/${user.email}?sort=${sortOrder}`
         );
         const data = await response.json();
         setMyToys(data);
@@ -53,50 +54,6 @@ const MyToys = () => {
     setSelectedUpdateToy(null);
   };
 
-  const handleUpdate = (toy) => {
-    const updatedToy = {
-      ...toy,
-      quantity: toy.quantity - 1, // Decrease the quantity by 1
-    };
-
-    fetch(`http://localhost:7000/my-toys/${toy._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedToy),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          const updatedToys = myToys.map((t) =>
-            t._id === toy._id ? updatedToy : t
-          );
-          setMyToys(updatedToys);
-          Swal.fire({
-            background: "#101010",
-            position: "center",
-            icon: "success",
-            title: "Toys Updated Successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire({
-          background: "#101010",
-          position: "center",
-          icon: "error",
-          title: "Something went wrong",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      });
-  };
-
   const handleDelete = (toy) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -119,9 +76,12 @@ const MyToys = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://avengers-server-mahmud3301.vercel.app/my-toys/${user.email}`, {
-            method: "DELETE",
-          })
+          fetch(
+            `https://avengers-server-mahmud3301.vercel.app/my-toys/${user.email}`,
+            {
+              method: "DELETE",
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
               if (data.deletedCount > 0) {
@@ -158,6 +118,49 @@ const MyToys = () => {
       });
   };
 
+
+  const handleUpdate = (id, updatedToy) => {
+    console.log( updatedToy);
+    fetch(
+      `http://localhost:7000/my-toys/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify( updatedToy ),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          const updatedToys = myToys.map((toy) =>
+            toy._id === id ? { ...toy, ...updatedToy } : toy
+          );
+          setMyToys(updatedToys);
+          Swal.fire(
+            "Updated!",
+            "Your toy information has been updated.",
+            "success"
+          );
+        } else {
+          Swal.fire(
+            "Failed to update",
+            "An error occurred while updating the toy information.",
+            "error"
+          );
+        }
+      })
+      .catch((error) => {
+        Swal.fire(
+          "Failed to update",
+          "An error occurred while updating the toy information.",
+          "error"
+        );
+        console.log(error);
+      });
+  };
+
   return (
     <div className="px-16">
       <h1
@@ -172,12 +175,12 @@ const MyToys = () => {
               <button
                 className="btn text-xl font-bold btn-primary mx-auto"
                 onClick={() => handleSort("desc")}>
-                <BiUpArrowAlt /> High expense
+                <BiDownArrowAlt /> Low expense
               </button>
               <button
                 className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
                 onClick={() => handleSort("asc")}>
-                <BiDownArrowAlt /> Low expense
+                <BiUpArrowAlt /> High expense
               </button>
             </>
           ) : (
@@ -185,12 +188,12 @@ const MyToys = () => {
               <button
                 className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
                 onClick={() => handleSort("desc")}>
-                <BiUpArrowAlt /> High expense
+                <BiDownArrowAlt /> Low expense
               </button>
               <button
                 className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
                 onClick={() => handleSort("asc")}>
-                <BiDownArrowAlt /> Low expense
+                <BiUpArrowAlt /> High expense
               </button>
             </>
           )}
@@ -212,7 +215,7 @@ const MyToys = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody data-aos="fade-left">
+            <tbody data-aos="fade-down">
               {myToys.map((toy, index) => (
                 <tr key={toy._id}>
                   <th></th>
