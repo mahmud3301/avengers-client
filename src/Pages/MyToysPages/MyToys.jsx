@@ -243,7 +243,7 @@ const MyToys = () => {
                   <td>{toy.availableQuantity}</td>
                   <td>
                     <div className="flex justify-center">
-                      <button className="btn btn-primary btn-square ml-2 text-xl">
+                      <button className="btn btn-primary btn-square text-xl">
                         <FiEdit3 onClick={() => updateOpenModal(toy)} />
                       </button>
                       <button
@@ -252,7 +252,7 @@ const MyToys = () => {
                         <MdDeleteForever />
                       </button>
                       <button
-                        className="btn btn-primary"
+                        className="btn btn-primary ml-2"
                         onClick={() => openModal(toy)}>
                         View Details
                       </button>

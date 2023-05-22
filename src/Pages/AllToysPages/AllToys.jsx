@@ -96,7 +96,7 @@ const AllToys = () => {
                 <td>{toy.availableQuantity}</td>
                 <td>
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary "
                     onClick={() => openModal(toy)}
                   >
                     View Details
@@ -107,7 +107,7 @@ const AllToys = () => {
           </tbody>
         </table>
       </div>
-      
+
       {selectedToy && (
         <AllToysDetails selectedToy={selectedToy} closeModal={closeModal}/>
       )}
