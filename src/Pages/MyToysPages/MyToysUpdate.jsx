@@ -6,7 +6,6 @@ const MyToysUpdate = ({
   selectedUpdateToy,
   handleUpdate,
 }) => {
-  console.log(selectedUpdateToy)
   const [toyData, setToyData] = useState({
     _id: selectedUpdateToy._id || "",
     pictureUrl: selectedUpdateToy.pictureUrl || "",

@@ -30,7 +30,6 @@ const AddToys = () => {
       seller,
       sellerEmail,
     };
-    console.log(data);
     fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data", {
       method: "POST",
       headers: {
@@ -40,7 +39,6 @@ const AddToys = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         form.reset();
         if (data.acknowledged) {
           Swal.fire({

@@ -14,7 +14,6 @@ const AllToys = () => {
   const {user} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/login";
 
   useEffect(() => {
     fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data")
@@ -38,7 +37,7 @@ const AllToys = () => {
         background: "#101010",
         text: "You have to log in first to view details",
       }).then(() => {
-        navigate(from, { replace: true });
+        navigate( `/login?from=${encodeURIComponent(location.pathname)}`, { replace: true });
       });
       return;
     }
@@ -108,7 +107,7 @@ const AllToys = () => {
           </tbody>
         </table>
       </div>
-
+      
       {selectedToy && (
         <AllToysDetails selectedToy={selectedToy} closeModal={closeModal}/>
       )}

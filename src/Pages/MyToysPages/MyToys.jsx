@@ -13,7 +13,6 @@ const MyToys = () => {
   UseTitle("My Toys");
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
-  console.log(myToys);
   const [selectedToy, setSelectedToy] = useState(null);
   const [selectedUpdateToy, setSelectedUpdateToy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -120,7 +119,6 @@ const MyToys = () => {
 
 
   const handleUpdate = (id, updatedToy) => {
-    console.log( updatedToy);
     fetch(
       `https://avengers-server.vercel.app/my-toys/${id}`,
       {
@@ -245,11 +243,6 @@ const MyToys = () => {
                   <td>{toy.availableQuantity}</td>
                   <td>
                     <div className="flex justify-center">
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => openModal(toy)}>
-                        View Details
-                      </button>
                       <button className="btn btn-primary btn-square ml-2 text-xl">
                         <FiEdit3 onClick={() => updateOpenModal(toy)} />
                       </button>
@@ -257,6 +250,11 @@ const MyToys = () => {
                         className="btn btn-primary btn-square ml-2 text-xl"
                         onClick={() => handleDelete(toy)}>
                         <MdDeleteForever />
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => openModal(toy)}>
+                        View Details
                       </button>
                     </div>
                   </td>

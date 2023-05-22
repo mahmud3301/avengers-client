@@ -17,7 +17,8 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const searchParams = new URLSearchParams(location.search);
+  const from = searchParams.get("from") || "/";
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -82,7 +83,9 @@ const Login = () => {
 
   return (
     <div>
-      <h1 data-aos="fade-down" className="text-5xl font-bold text-center mt-28"><span className="text-primary">Login</span> now!</h1>
+      <h1 data-aos="fade-down" className="text-5xl font-bold text-center mt-28">
+        <span className="text-primary">Login</span> now!
+      </h1>
       <div className="hero bg-[#000]">
         <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
           <div data-aos="fade-left" className="text-center lg:text-left">

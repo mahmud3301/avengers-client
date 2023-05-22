@@ -3,7 +3,7 @@ const AllToysDetails = ({ selectedToy, closeModal }) => {
   return (
     <div>
       <div className="fixed inset-0 flex items-center justify-center z-50">
-        <div className="modal modal-open">
+        <div id="#toyDetails" className="modal modal-open">
           <div className="modal-box w-11/12 max-w-2xl lg:max-w-4xl">
             <label
               onClick={closeModal}
