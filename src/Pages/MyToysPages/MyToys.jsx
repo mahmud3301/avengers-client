@@ -22,7 +22,7 @@ const MyToys = () => {
     const fetchMyToys = async () => {
       try {
         const response = await fetch(
-          `http://localhost:7000/my-toys/${user.email}?sort=${sortOrder}`
+          `https://avengers-server.vercel.app/my-toys/${user.email}?sort=${sortOrder}`
         );
         const data = await response.json();
         setMyToys(data);
@@ -122,7 +122,7 @@ const MyToys = () => {
   const handleUpdate = (id, updatedToy) => {
     console.log( updatedToy);
     fetch(
-      `http://localhost:7000/my-toys/${id}`,
+      `https://avengers-server.vercel.app/my-toys/${id}`,
       {
         method: "PUT",
         headers: {
