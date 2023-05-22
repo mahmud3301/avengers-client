@@ -30,7 +30,6 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    // Check if user is already logged in and has a profile
     if (auth.currentUser) {
       const { displayName, photoURL } = auth.currentUser;
       if (displayName && photoURL) {

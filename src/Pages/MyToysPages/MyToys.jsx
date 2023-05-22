@@ -138,27 +138,45 @@ const MyToys = () => {
             toy._id === id ? { ...toy, ...updatedToy } : toy
           );
           setMyToys(updatedToys);
-          Swal.fire(
-            "Updated!",
-            "Your toy information has been updated.",
-            "success"
-          );
+          Swal.fire({
+            customClass: {
+              confirmButton: "btn btn-success",
+              cancelButton: "btn btn-danger mr-5",
+            },
+            buttonsStyling: true,
+            background: "#101010",
+            title: "Updated!",
+            text: "Your toy information has been updated.",
+            icon: "success",
+          });
         } else {
-          Swal.fire(
-            "Failed to update",
-            "An error occurred while updating the toy information.",
-            "error"
-          );
+          Swal.fire({
+            customClass: {
+              confirmButton: "btn btn-success",
+              cancelButton: "btn btn-danger mr-5",
+            },
+            buttonsStyling: true,
+            background: "#101010",
+            title: "Failed to update",
+            text: "An error occurred while updating the toy information.",
+            icon: "error",
+          });
         }
       })
       .catch((error) => {
-        Swal.fire(
-          "Failed to update",
-          "An error occurred while updating the toy information.",
-          "error"
-        );
+        Swal.fire({
+          customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger mr-5",
+          },
+          buttonsStyling: true,
+          background: "#101010",
+          title: "Failed to update",
+          text: "An error occurred while updating the toy information.",
+          icon: "error",
+        });
         console.log(error);
-      });
+      });  
   };
 
   return (
@@ -175,12 +193,12 @@ const MyToys = () => {
               <button
                 className="btn text-xl font-bold btn-primary mx-auto"
                 onClick={() => handleSort("desc")}>
-                <BiDownArrowAlt /> Low expense
+                <BiUpArrowAlt /> High expense
               </button>
               <button
                 className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
                 onClick={() => handleSort("asc")}>
-                <BiUpArrowAlt /> High expense
+                <BiDownArrowAlt /> Low expense
               </button>
             </>
           ) : (
@@ -188,12 +206,12 @@ const MyToys = () => {
               <button
                 className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
                 onClick={() => handleSort("desc")}>
-                <BiDownArrowAlt /> Low expense
+                <BiUpArrowAlt /> High expense
               </button>
               <button
                 className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
                 onClick={() => handleSort("asc")}>
-                <BiUpArrowAlt /> High expense
+                <BiDownArrowAlt /> Low expense
               </button>
             </>
           )}

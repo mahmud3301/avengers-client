@@ -23,7 +23,6 @@ const Category = () => {
         background: "#101010",
         text: "You have to log in first to view details",
       }).then(() => {
-        // Redirect to login page
         navigate(from, { replace: true });
       });
       return;
