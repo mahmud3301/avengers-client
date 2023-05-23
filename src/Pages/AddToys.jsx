@@ -42,7 +42,7 @@ const AddToys = () => {
         form.reset();
         if (data.acknowledged) {
           Swal.fire({
-            background: "#101010",
+            background: "#f0efe6",
             position: "center",
             icon: "success",
             title: "Toys Added Successfully",
@@ -51,7 +51,7 @@ const AddToys = () => {
           });
         } else {
           Swal.fire({
-            background: "#101010",
+            background: "#f0efe6",
             position: "center",
             icon: "error",
             title: "Something went wrong",

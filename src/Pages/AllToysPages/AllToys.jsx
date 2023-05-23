@@ -34,7 +34,7 @@ const AllToys = () => {
     if (!user) {
       Swal.fire({
         icon: "error",
-        background: "#101010",
+        background: "#f0efe6",
         text: "You have to log in first to view details",
       }).then(() => {
         navigate( `/login?from=${encodeURIComponent(location.pathname)}`, { replace: true });

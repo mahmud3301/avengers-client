@@ -60,7 +60,7 @@ const MyToys = () => {
         cancelButton: "btn btn-danger mr-5",
       },
       buttonsStyling: true,
-      background: "#101010",
+      background: "#f0efe6",
     });
 
     swalWithBootstrapButtons
@@ -142,7 +142,7 @@ const MyToys = () => {
               cancelButton: "btn btn-danger mr-5",
             },
             buttonsStyling: true,
-            background: "#101010",
+            background: "#f0efe6",
             title: "Updated!",
             text: "Your toy information has been updated.",
             icon: "success",
@@ -154,7 +154,7 @@ const MyToys = () => {
               cancelButton: "btn btn-danger mr-5",
             },
             buttonsStyling: true,
-            background: "#101010",
+            background: "#f0efe6",
             title: "Failed to update",
             text: "An error occurred while updating the toy information.",
             icon: "error",
@@ -168,7 +168,7 @@ const MyToys = () => {
             cancelButton: "btn btn-danger mr-5",
           },
           buttonsStyling: true,
-          background: "#101010",
+          background: "#f0efe6",
           title: "Failed to update",
           text: "An error occurred while updating the toy information.",
           icon: "error",

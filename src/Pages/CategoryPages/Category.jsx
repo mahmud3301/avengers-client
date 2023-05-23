@@ -20,7 +20,7 @@ const Category = () => {
     if (!user) {
       Swal.fire({
         icon: "error",
-        background: "#f5f5f5",
+        background: "#f0efe6",
         text: "You have to log in first to view details",
       }).then(() => {
         navigate(from, { replace: true });
