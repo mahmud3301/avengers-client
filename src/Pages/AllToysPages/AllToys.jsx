@@ -16,17 +16,17 @@ const AllToys = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data")
+    fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data?limit=20")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    fetch(`https://avengers-server-mahmud3301.vercel.app/all-toys-data/${searchText}`)
+    fetch(`https://avengers-server-mahmud3301.vercel.app/all-toys-data/${searchText}?limit=20`)
       .then((res) => res.json())
       .then((data) => setToys(data));
-  }
+  };
 
   const [selectedToy, setSelectedToy] = useState(null);
 
@@ -96,7 +96,7 @@ const AllToys = () => {
                 <td>{toy.availableQuantity}</td>
                 <td>
                   <button
-                    className="btn btn-primary "
+                    className="btn btn-primary"
                     onClick={() => openModal(toy)}
                   >
                     View Details
