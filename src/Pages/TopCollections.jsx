@@ -17,7 +17,7 @@ const TopCollections = () => {
             style={{
               backgroundImage: `url("https://i.insider.com/5ca0123e92c8860a3a6eaad3?width=1200&format=jpeg")`,
             }}>
-            <div className="hero-overlay bg-opacity-70"></div>
+            <div className="hero-overlay bg-opacity-50"></div>
             <div className="hero-content mr-auto mt-auto ml-12 mb-36 text-neutral-content">
               <div>
                 <p className="text-xl font-bold">
@@ -51,7 +51,7 @@ const TopCollections = () => {
             style={{
               backgroundImage: `url("https://i.ytimg.com/vi/DpQdJl6c0UU/maxresdefault.jpg ")`,
             }}>
-            <div className="hero-overlay bg-opacity-70"></div>
+            <div className="hero-overlay bg-opacity-50"></div>
             <div className="hero-content mr-auto mt-auto ml-12 mb-36 text-neutral-content">
               <div>
                 <p className="text-xl font-bold">
@@ -84,7 +84,7 @@ const TopCollections = () => {
             style={{
               backgroundImage: `url("https://down-ph.img.susercontent.com/file/cb5520ca1c4c8e23d7c5d5afdce1b639")`,
             }}>
-            <div className="hero-overlay bg-opacity-70"></div>
+            <div className="hero-overlay bg-opacity-50"></div>
             <div className="hero-content mr-auto mt-auto ml-12 mb-36 text-neutral-content">
               <div>
                 <p className="text-xl font-bold">
@@ -119,7 +119,7 @@ const TopCollections = () => {
             style={{
               backgroundImage: `url("https://www.gannett-cdn.com/presto/2021/10/23/USAT/fc66b0a6-9de2-4073-b10f-15450a5d2847-Avengers.png")`,
             }}>
-            <div className="hero-overlay bg-opacity-70"></div>
+            <div className="hero-overlay bg-opacity-50"></div>
             <div className="hero-content mr-auto mt-auto ml-12 mb-36 text-neutral-content">
               <div>
                 <p className="text-xl font-bold">

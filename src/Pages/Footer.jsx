@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-[#101010] text-neutral-content">
+      <footer className="footer p-10 bg-base-300">
         <div className="md:ml-64">
           <NavLink to="/" className="mt-1 ml-1">
             <div className="rounded-full">
@@ -53,7 +53,7 @@ const Footer = () => {
           <p>Cashier: 0123-456-789</p>
         </div>
       </footer>
-      <footer className="footer footer-center p-4 bg-[#101010] text-base-content">
+      <footer className="footer footer-center p-4 bg-base-300 text-base-content">
         <div>
           <p>
             Copyright © 2023 -

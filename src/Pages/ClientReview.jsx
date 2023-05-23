@@ -12,7 +12,7 @@ const ClientReview = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom"
-          className="card w-96 h-96 text-center m-5 bg-[#101010] shadow-xl">
+          className="card w-96 h-96 text-center m-5 bg-base-200 shadow-xl">
           <div className="card-body">
             <h2 className="text-center font-bold">Jhon dae</h2>
             <p>
@@ -30,7 +30,7 @@ const ClientReview = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom"
-          className="card w-96 h-96 text-center m-5 bg-[#101010] shadow-xl">
+          className="card w-96 h-96 text-center m-5 bg-base-200 shadow-xl">
           <div className="card-body">
             <h2 className="text-center font-bold">Olivia Martinez</h2>
             <p>I so happy to get this all avengers quality product</p>
@@ -45,7 +45,7 @@ const ClientReview = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom"
-          className="card w-96 h-96 text-center m-5 bg-[#101010] shadow-xl">
+          className="card w-96 h-96 text-center m-5 bg-base-200 shadow-xl">
           <div className="card-body">
             <h2 className="text-center font-bold">Victoria</h2>
             <p>The toys of this store is god blessing awesome</p>
@@ -60,7 +60,7 @@ const ClientReview = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom"
-          className="card w-96 h-96 text-center m-5 bg-[#101010] shadow-xl">
+          className="card w-96 h-96 text-center m-5 bg-base-200 shadow-xl">
           <div className="card-body">
             <h2 className="text-center font-bold">John JR.</h2>
             <p>
@@ -78,7 +78,7 @@ const ClientReview = () => {
         <div
           data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom"
-          className="card w-96 h-96 text-center m-5 bg-[#101010] shadow-xl">
+          className="card w-96 h-96 text-center m-5 bg-base-200 shadow-xl">
           <div className="card-body">
             <h2 className="text-center font-bold">Ema</h2>
             <p>

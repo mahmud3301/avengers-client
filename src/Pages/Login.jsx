@@ -7,6 +7,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import UseTitle from "../Hooks/UseTitle";
 import { AuthContext } from "../Provider/AuthProvider";
+import loginPng from"../assets/login.png"
 
 const Login = () => {
   UseTitle("Login");
@@ -86,19 +87,19 @@ const Login = () => {
       <h1 data-aos="fade-down" className="text-5xl font-bold text-center mt-28">
         <span className="text-primary">Login</span> now!
       </h1>
-      <div className="hero bg-[#000]">
+      <div className="hero bg-base-100">
         <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
           <div data-aos="fade-left" className="text-center lg:text-left">
             <p className="py-6">
               <img
                 className="w-96 mb-8"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaUAP6QZEVsyb3pPnYUUp2I2Hz0J4NmX_cg&usqp=CAU"
+                src={loginPng}
                 alt=""
               />
             </p>
           </div>
           <form data-aos="fade-right" className="w-full" onSubmit={handleLogin}>
-            <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-[#171717]">
+            <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-base-100">
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">

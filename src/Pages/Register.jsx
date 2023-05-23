@@ -14,6 +14,7 @@ import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import UseTitle from "../Hooks/UseTitle";
+import registerPng from "../assets/login.png"
 
 const Register = () => {
   UseTitle("Register");
@@ -111,19 +112,19 @@ const Register = () => {
   return (
     <div>
       <h1 data-aos="fade-up" className="text-5xl font-bold text-center mt-28"><span className="text-primary">Register</span> now!</h1>
-      <div className="hero bg-[#000] mb-24">
+      <div className="hero bg-base-100 mb-24">
         <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
           <div data-aos="fade-right" className="text-center lg:text-left">
             <p className="w-full h-full">
               <img
                 className="w-96 mb-8"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaUAP6QZEVsyb3pPnYUUp2I2Hz0J4NmX_cg&usqp=CAU"
+                src={registerPng}
                 alt=""
               />
             </p>
           </div>
           <form data-aos="fade-left" className="w-full" onSubmit={handleRegister}>
-            <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-[#171717]">
+            <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-base-100">
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">

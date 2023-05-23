@@ -20,7 +20,7 @@ const Category = () => {
     if (!user) {
       Swal.fire({
         icon: "error",
-        background: "#101010",
+        background: "#f5f5f5",
         text: "You have to log in first to view details",
       }).then(() => {
         navigate(from, { replace: true });
@@ -74,7 +74,7 @@ const Category = () => {
             </h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
               {toysData[0]?.ironManToys?.map((item, index) => (
-                <div key={index} className="hero rounded-2xl bg-[#101010]">
+                <div key={index} className="hero rounded-2xl bg-base-200">
                   <div
                     data-aos="zoom-in-right"
                     className="hero-content flex-col lg:flex-row">
@@ -108,7 +108,7 @@ const Category = () => {
             </h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2 container justify-center mx-auto">
               {toysData[1]?.spiderManToys?.map((item, index) => (
-                <div key={index} className="hero rounded-2xl bg-[#101010]">
+                <div key={index} className="hero rounded-2xl bg-base-200">
                   <div
                     data-aos="zoom-in-right"
                     className="hero-content flex-col lg:flex-row">
@@ -142,7 +142,7 @@ const Category = () => {
             </h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
               {toysData[2]?.grootToys?.map((item, index) => (
-                <div key={index} className="hero rounded-2xl bg-[#101010]">
+                <div key={index} className="hero rounded-2xl bg-base-200">
                   <div
                     data-aos="zoom-in-right"
                     className="hero-content flex-col lg:flex-row">
