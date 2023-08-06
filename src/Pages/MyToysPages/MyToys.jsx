@@ -8,6 +8,7 @@ import MyToysDetails from "./MyToysDetails";
 import Swal from "sweetalert2";
 import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import MyToysUpdate from "./MyToysUpdate";
+import Banner from "../../Shared/Banner";
 
 const MyToys = () => {
   UseTitle("My Toys");
@@ -57,10 +58,10 @@ const MyToys = () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger mr-5",
+        cancelButton: "btn btn-danger mr-5"
       },
       buttonsStyling: true,
-      background: "#f0efe6",
+      background: "#f0efe6"
     });
 
     swalWithBootstrapButtons
@@ -71,14 +72,14 @@ const MyToys = () => {
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
         cancelButtonText: "No, cancel!",
-        reverseButtons: true,
+        reverseButtons: true
       })
       .then((result) => {
         if (result.isConfirmed) {
           fetch(
             `https://avengers-server-mahmud3301.vercel.app/my-toys/${user.email}`,
             {
-              method: "DELETE",
+              method: "DELETE"
             }
           )
             .then((response) => response.json())
@@ -117,18 +118,14 @@ const MyToys = () => {
       });
   };
 
-
   const handleUpdate = (id, updatedToy) => {
-    fetch(
-      `https://avengers-server.vercel.app/my-toys/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify( updatedToy ),
-      }
-    )
+    fetch(`https://avengers-server.vercel.app/my-toys/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedToy)
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -139,25 +136,25 @@ const MyToys = () => {
           Swal.fire({
             customClass: {
               confirmButton: "btn btn-success",
-              cancelButton: "btn btn-danger mr-5",
+              cancelButton: "btn btn-danger mr-5"
             },
             buttonsStyling: true,
             background: "#f0efe6",
             title: "Updated!",
             text: "Your toy information has been updated.",
-            icon: "success",
+            icon: "success"
           });
         } else {
           Swal.fire({
             customClass: {
               confirmButton: "btn btn-success",
-              cancelButton: "btn btn-danger mr-5",
+              cancelButton: "btn btn-danger mr-5"
             },
             buttonsStyling: true,
             background: "#f0efe6",
             title: "Failed to update",
             text: "An error occurred while updating the toy information.",
-            icon: "error",
+            icon: "error"
           });
         }
       })
@@ -165,121 +162,124 @@ const MyToys = () => {
         Swal.fire({
           customClass: {
             confirmButton: "btn btn-success",
-            cancelButton: "btn btn-danger mr-5",
+            cancelButton: "btn btn-danger mr-5"
           },
           buttonsStyling: true,
           background: "#f0efe6",
           title: "Failed to update",
           text: "An error occurred while updating the toy information.",
-          icon: "error",
+          icon: "error"
         });
         console.log(error);
-      });  
+      });
   };
 
   return (
-    <div className="px-16">
-      <h1
-        data-aos="fade-down"
-        className="font-bold text-center mt-12 mb-16 text-3xl">
-        My <span className="text-primary">Toys</span>
-      </h1>
-      {myToys.length > 0 && (
-        <div className="text-center mb-16">
-          {sortOrder === "asc" ? (
-            <>
-              <button
-                className="btn text-xl font-bold btn-primary mx-auto"
-                onClick={() => handleSort("desc")}>
-                <BiUpArrowAlt /> High expense
-              </button>
-              <button
-                className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
-                onClick={() => handleSort("asc")}>
-                <BiDownArrowAlt /> Low expense
-              </button>
-            </>
+    <>
+    <Banner imageUrl={"https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/11/Marvel-Snap.jpg"} title={"My Toys"}/>
+      <div className="px-16">
+        <h1
+          data-aos="fade-down"
+          className="font-bold text-center mt-12 mb-16 text-3xl">
+          My <span className="text-primary">Toys</span>
+        </h1>
+        {myToys.length > 0 && (
+          <div className="text-center mb-16">
+            {sortOrder === "asc" ? (
+              <>
+                <button
+                  className="btn text-xl font-bold btn-primary mx-auto"
+                  onClick={() => handleSort("desc")}>
+                  <BiUpArrowAlt /> High expense
+                </button>
+                <button
+                  className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
+                  onClick={() => handleSort("asc")}>
+                  <BiDownArrowAlt /> Low expense
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
+                  onClick={() => handleSort("desc")}>
+                  <BiUpArrowAlt /> High expense
+                </button>
+                <button
+                  className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
+                  onClick={() => handleSort("asc")}>
+                  <BiDownArrowAlt /> Low expense
+                </button>
+              </>
+            )}
+          </div>
+        )}
+
+        <div data-aos="fade-up" className="overflow-x-auto">
+          {myToys.length > 0 ? (
+            <table className="table table-compact w-full text-center">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Product No.</th>
+                  <th>Seller</th>
+                  <th>Toy Name</th>
+                  <th>Sub category</th>
+                  <th>Price</th>
+                  <th>Available Quantity</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody data-aos="fade-down">
+                {myToys.map((toy, index) => (
+                  <tr key={toy._id}>
+                    <th></th>
+                    <th>{index + 1}</th>
+                    <td className="font-bold">{toy.seller}</td>
+                    <td>{toy.toyName}</td>
+                    <td>{toy.subCategory}</td>
+                    <td>${toy.price}</td>
+                    <td>{toy.availableQuantity}</td>
+                    <td>
+                      <div className="flex justify-center">
+                        <button className="btn btn-primary btn-square text-xl">
+                          <FiEdit3 onClick={() => updateOpenModal(toy)} />
+                        </button>
+                        <button
+                          className="btn btn-primary btn-square ml-2 text-xl"
+                          onClick={() => handleDelete(toy)}>
+                          <MdDeleteForever />
+                        </button>
+                        <button
+                          className="btn btn-primary ml-2"
+                          onClick={() => openModal(toy)}>
+                          View Details
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           ) : (
-            <>
-              <button
-                className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
-                onClick={() => handleSort("desc")}>
-                <BiUpArrowAlt /> High expense
-              </button>
-              <button
-                className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
-                onClick={() => handleSort("asc")}>
-                <BiDownArrowAlt /> Low expense
-              </button>
-            </>
+            <p className="text-center text-2xl">
+              You don't have any toys yet.
+              <span className="text-primary"> Please add some.</span>
+            </p>
           )}
         </div>
-      )}
-
-      <div data-aos="fade-up" className="overflow-x-auto">
-        {myToys.length > 0 ? (
-          <table className="table table-compact w-full text-center">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Product No.</th>
-                <th>Seller</th>
-                <th>Toy Name</th>
-                <th>Sub category</th>
-                <th>Price</th>
-                <th>Available Quantity</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody data-aos="fade-down">
-              {myToys.map((toy, index) => (
-                <tr key={toy._id}>
-                  <th></th>
-                  <th>{index + 1}</th>
-                  <td className="font-bold">{toy.seller}</td>
-                  <td>{toy.toyName}</td>
-                  <td>{toy.subCategory}</td>
-                  <td>${toy.price}</td>
-                  <td>{toy.availableQuantity}</td>
-                  <td>
-                    <div className="flex justify-center">
-                      <button className="btn btn-primary btn-square text-xl">
-                        <FiEdit3 onClick={() => updateOpenModal(toy)} />
-                      </button>
-                      <button
-                        className="btn btn-primary btn-square ml-2 text-xl"
-                        onClick={() => handleDelete(toy)}>
-                        <MdDeleteForever />
-                      </button>
-                      <button
-                        className="btn btn-primary ml-2"
-                        onClick={() => openModal(toy)}>
-                        View Details
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p className="text-center text-2xl">
-            You don't have any toys yet.
-            <span className="text-primary"> Please add some.</span>
-          </p>
+        {selectedToy && (
+          <MyToysDetails selectedToy={selectedToy} closeModal={closeModal} />
+        )}
+        {selectedUpdateToy && (
+          <MyToysUpdate
+            selectedUpdateToy={selectedUpdateToy}
+            updateCloseModal={updateCloseModal}
+            handleUpdate={handleUpdate}
+          />
         )}
       </div>
-      {selectedToy && (
-        <MyToysDetails selectedToy={selectedToy} closeModal={closeModal} />
-      )}
-      {selectedUpdateToy && (
-        <MyToysUpdate
-          selectedUpdateToy={selectedUpdateToy}
-          updateCloseModal={updateCloseModal}
-          handleUpdate={handleUpdate}
-        />
-      )}
-    </div>
+    </>
   );
 };
 

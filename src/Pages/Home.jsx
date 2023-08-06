@@ -5,6 +5,9 @@ import Category from "./CategoryPages/Category";
 import UseTitle from "../Hooks/UseTitle";
 import TopCollections from "./TopCollections";
 import ClientReview from "./ClientReview";
+import Faq from "../Shared/Faq";
+import SubscribeUs from "../Shared/SubscribeUs";
+import Models from "./Models";
 
 const Home = () => {
   UseTitle("Home");
@@ -14,11 +17,11 @@ const Home = () => {
         data-aos="fade-right"
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
-        className="hero min-h-screen" style=
-        {{
-          backgroundImage: `url("https://i.ebayimg.com/images/g/G4sAAOSw6ZBdWHLz/s-l1600.jpg")`,
-        }}
-        ><div className="hero-overlay bg-opacity-70"></div>
+        className="hero min-h-screen"
+        style={{
+          backgroundImage: `url("https://i.ebayimg.com/images/g/G4sAAOSw6ZBdWHLz/s-l1600.jpg")`
+        }}>
+        <div className="hero-overlay bg-opacity-70"></div>
         <div
           className="hero-content text-left text-neutral-content lg:mr-auto lg:ml-24"
           data-aos="fade-down"
@@ -42,6 +45,9 @@ const Home = () => {
       <Category />
       <TopCollections />
       <ClientReview />
+      <Models />
+      <Faq />
+      <SubscribeUs />
     </div>
   );
 };

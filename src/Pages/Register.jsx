@@ -5,7 +5,7 @@ import {
   FacebookAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
-  getAuth,
+  getAuth, 
   signInWithPopup,
   updateProfile
 } from "firebase/auth";

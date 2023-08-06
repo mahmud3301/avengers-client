@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -152,11 +154,15 @@ const Header = () => {
           {user && (
             <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
               <button>
-                <img
-                  className="w-10 mt-2 rounded-xl"
-                  src={user.photoURL}
-                  alt={user.displayName}
-                />
+                <PhotoProvider className="rounded-xl">
+                  <PhotoView src={user.photoURL}>
+                    <img
+                      className="w-10 mt-2 rounded-xl"
+                      src={user.photoURL}
+                      alt={user.displayName}
+                    />
+                  </PhotoView>
+                </PhotoProvider>
               </button>
             </div>
           )}
