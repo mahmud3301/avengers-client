@@ -22,7 +22,7 @@ const MyToys = () => {
     const fetchMyToys = async () => {
       try {
         const response = await fetch(
-          `http://localhost:7000/my-toys/${user.email}?sort=${sortOrder}`
+          `https://avengers-server.vercel.app/my-toys/${user.email}?sort=${sortOrder}`
         );
         const data = await response.json();
         setMyToys(data);

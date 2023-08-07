@@ -7,7 +7,7 @@ const Gallery = () => {
   const [isBlur, setIsBlur] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:7000/image-gallery")
+    fetch("https://avengers-server.vercel.app/image-gallery")
       .then((res) => res.json())
       .then((data) => {
         setGalleryData(data);

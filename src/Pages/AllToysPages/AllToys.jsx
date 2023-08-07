@@ -20,14 +20,14 @@ const AllToys = () => {
   const location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:7000/all-toys-data/")
+    fetch("https://avengers-server.vercel.app/all-toys-data/")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
 
   // useEffect(() => {
   //   fetch(
-  //     "http://localhost:7000/all-toys-data?page=${currentPage}&limit=${itemsPerPage}"
+  //     "https://avengers-server.vercel.app/all-toys-data?page=${currentPage}&limit=${itemsPerPage}"
   //   )
   //     .then((res) => res.json())
   //     .then((data) => setToys(data));
@@ -35,7 +35,7 @@ const AllToys = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:7000/all-toys-data/${searchText}`)
+    fetch(`https://avengers-server.vercel.app/all-toys-data/${searchText}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   };

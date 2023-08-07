@@ -38,7 +38,7 @@ const Category = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:7000/toys-data")
+    fetch("https://avengers-server.vercel.app/toys-data")
       .then((res) => res.json())
       .then((data) => {
         setToysData(data);
