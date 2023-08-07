@@ -6,7 +6,7 @@ const CategoryDetails = ({ selectedToy, setIsModalOpen }) => {
           <div className="modal-box w-11/12 max-w-2xl lg:max-w-4xl">
             <label
               onClick={() => setIsModalOpen(false)}
-              className="btn btn-sm btn-circle btn-primary absolute right-8 top-6">
+              className="btn btn-sm btn-circle btn-error absolute right-8 top-6">
               ✕
             </label>
             <div className="grid grid-cols-1 lg:grid-cols-2 mt-12">

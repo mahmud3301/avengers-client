@@ -19,24 +19,24 @@ const Home = () => {
         data-aos-easing="ease-in-sine"
         className="hero min-h-screen"
         style={{
-          backgroundImage: `url("https://i.ebayimg.com/images/g/G4sAAOSw6ZBdWHLz/s-l1600.jpg")`
+          backgroundImage: `url("https://cdn.mos.cms.futurecdn.net/5CcNVeeqSP3woRxP7yEzea.jpg")`
         }}>
-        <div className="hero-overlay bg-opacity-70"></div>
+        <div className="hero-overlay bg-red-600 bg-opacity-20"></div>
         <div
-          className="hero-content text-left text-neutral-content lg:mr-auto lg:ml-24"
+          className="hero-content text-left text-white lg:mr-auto lg:ml-24"
           data-aos="fade-down"
           data-aos-easing="linear"
           data-aos-duration="1500">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Welcome</h1>
-            <h1 className="mb-5 text-5xl font-bold">To Avengers Shop</h1>
-            <p className="mb-5">
+          <div>
+            <h1 className="mb-5 text-3xl md:text-8xl font-bold">Welcome</h1>
+            <h1 className="mb-5 text-3xl md:text-8xl font-bold">To Avengers Shop</h1>
+            <p className="mb-5 max-w-3xl">
               In our shop tou can get the latest and good quality's of Avengers
               toys. We are inspired by all marvel avengers like Iron Man, Hulk,
               Captain America, Grout so just explore and enjoy!
             </p>
             <ScrollLink to="gallery" smooth={true} duration={600}>
-              <button className="btn btn-primary">Get Started</button>
+              <button className="btn btn-error">Get Started</button>
             </ScrollLink>
           </div>
         </div>

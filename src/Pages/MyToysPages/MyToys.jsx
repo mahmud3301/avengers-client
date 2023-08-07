@@ -22,7 +22,7 @@ const MyToys = () => {
     const fetchMyToys = async () => {
       try {
         const response = await fetch(
-          `https://avengers-server.vercel.app/my-toys/${user.email}?sort=${sortOrder}`
+          `http://localhost:7000/my-toys/${user.email}?sort=${sortOrder}`
         );
         const data = await response.json();
         setMyToys(data);
@@ -77,7 +77,7 @@ const MyToys = () => {
       .then((result) => {
         if (result.isConfirmed) {
           fetch(
-            `https://avengers-server-mahmud3301.vercel.app/my-toys/${user.email}`,
+            `https://avengers-server.vercel.app/my-toys/${user.email}`,
             {
               method: "DELETE"
             }
@@ -181,19 +181,19 @@ const MyToys = () => {
         <h1
           data-aos="fade-down"
           className="font-bold text-center mt-12 mb-16 text-3xl">
-          My <span className="text-primary">Toys</span>
+          My <span className="text-error">Toys</span>
         </h1>
         {myToys.length > 0 && (
           <div className="text-center mb-16">
             {sortOrder === "asc" ? (
               <>
                 <button
-                  className="btn text-xl font-bold btn-primary mx-auto"
+                  className="btn text-xl font-bold btn-error mx-auto"
                   onClick={() => handleSort("desc")}>
                   <BiUpArrowAlt /> High expense
                 </button>
                 <button
-                  className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
+                  className="btn text-xl font-bold btn-error mx-auto mt-3 lg:mt-0 ml-0 lg:ml-3"
                   onClick={() => handleSort("asc")}>
                   <BiDownArrowAlt /> Low expense
                 </button>
@@ -201,12 +201,12 @@ const MyToys = () => {
             ) : (
               <>
                 <button
-                  className="btn text-xl font-bold btn-primary mx-auto mr-0 lg:mr-3"
+                  className="btn text-xl font-bold btn-error mx-auto mr-0 lg:mr-3"
                   onClick={() => handleSort("desc")}>
                   <BiUpArrowAlt /> High expense
                 </button>
                 <button
-                  className="btn text-xl font-bold btn-primary mx-auto mt-3 lg:mt-0"
+                  className="btn text-xl font-bold btn-error mx-auto mt-3 lg:mt-0"
                   onClick={() => handleSort("asc")}>
                   <BiDownArrowAlt /> Low expense
                 </button>
@@ -217,7 +217,7 @@ const MyToys = () => {
 
         <div data-aos="fade-up" className="overflow-x-auto">
           {myToys.length > 0 ? (
-            <table className="table table-compact w-full text-center">
+            <table className="table bg-base-300 table-compact w-full text-center rounded-2xl">
               <thead>
                 <tr>
                   <th></th>
@@ -233,25 +233,25 @@ const MyToys = () => {
               <tbody data-aos="fade-down">
                 {myToys.map((toy, index) => (
                   <tr key={toy._id}>
-                    <th></th>
-                    <th>{index + 1}</th>
-                    <td className="font-bold">{toy.seller}</td>
-                    <td>{toy.toyName}</td>
-                    <td>{toy.subCategory}</td>
-                    <td>${toy.price}</td>
-                    <td>{toy.availableQuantity}</td>
-                    <td>
+                    <th className="bg-red-800"></th>
+                    <th className="bg-red-800">{index + 1}</th>
+                    <td className="font-bold bg-red-800">{toy.seller}</td>
+                    <td className="bg-red-800">{toy.toyName}</td>
+                    <td className="bg-red-800">{toy.subCategory}</td>
+                    <td className="bg-red-800">${toy.price}</td>
+                    <td className="bg-red-800">{toy.availableQuantity}</td>
+                    <td className="bg-red-800">
                       <div className="flex justify-center">
-                        <button className="btn btn-primary btn-square text-xl">
+                        <button className="btn btn-error btn-square text-xl">
                           <FiEdit3 onClick={() => updateOpenModal(toy)} />
                         </button>
                         <button
-                          className="btn btn-primary btn-square ml-2 text-xl"
+                          className="btn btn-error btn-square ml-2 text-xl"
                           onClick={() => handleDelete(toy)}>
                           <MdDeleteForever />
                         </button>
                         <button
-                          className="btn btn-primary ml-2"
+                          className="btn btn-error ml-2"
                           onClick={() => openModal(toy)}>
                           View Details
                         </button>
@@ -264,7 +264,7 @@ const MyToys = () => {
           ) : (
             <p className="text-center text-2xl">
               You don't have any toys yet.
-              <span className="text-primary"> Please add some.</span>
+              <span className="text-error"> Please add some.</span>
             </p>
           )}
         </div>

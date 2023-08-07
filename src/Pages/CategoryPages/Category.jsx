@@ -38,7 +38,7 @@ const Category = () => {
   };
 
   useEffect(() => {
-    fetch("https://avengers-server-mahmud3301.vercel.app/toys-data")
+    fetch("http://localhost:7000/toys-data")
       .then((res) => res.json())
       .then((data) => {
         setToysData(data);
@@ -50,7 +50,7 @@ const Category = () => {
       id="/category"
       className="container mt-16 mb-24 justify-center text-center mx-auto">
       <h1 data-aos="fade-up" className="mb-12 font-bold text-3xl">
-        Shop By <span className="text-primary">Category</span>
+        Shop By <span className="text-error">Category</span>
       </h1>
       <div className="justify-center mx-auto text-center">
         <Tabs
@@ -70,7 +70,7 @@ const Category = () => {
           </TabList>
           <TabPanel>
             <h2 className="text-2xl font-bold mt-16 mb-12">
-              Iron Man <span className="text-primary">Toys</span>
+              Iron Man <span className="text-error">Toys</span>
             </h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
               {toysData[0]?.ironManToys?.map((item, index) => (
@@ -92,7 +92,7 @@ const Category = () => {
                         Ratings: {item.rating}
                       </h1>
                       <button
-                        className="btn btn-primary mt-8"
+                        className="btn btn-error mt-8"
                         onClick={() => openModal(item)}>
                         View Details
                       </button>
@@ -104,7 +104,7 @@ const Category = () => {
           </TabPanel>
           <TabPanel>
             <h2 className="text-2xl font-bold mt-16 mb-12">
-              Spider Man <span className="text-primary">Toys</span>
+              Spider Man <span className="text-error">Toys</span>
             </h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2 container justify-center mx-auto">
               {toysData[1]?.spiderManToys?.map((item, index) => (
@@ -126,7 +126,7 @@ const Category = () => {
                         Ratings: {item.rating}
                       </h1>
                       <button
-                        className="btn btn-primary mt-8"
+                        className="btn btn-error mt-8"
                         onClick={() => openModal(item)}>
                         View Details
                       </button>
@@ -138,7 +138,7 @@ const Category = () => {
           </TabPanel>
           <TabPanel>
             <h2 className="text-2xl font-bold mt-16 mb-12">
-              Groot <span className="text-primary">Toys</span>
+              Groot <span className="text-error">Toys</span>
             </h2>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 md:grid-cols-2">
               {toysData[2]?.grootToys?.map((item, index) => (
@@ -160,7 +160,7 @@ const Category = () => {
                         Ratings: {item.rating}
                       </h1>
                       <button
-                        className="btn btn-primary mt-8"
+                        className="btn btn-error mt-8"
                         onClick={() => openModal(item)}>
                         View Details
                       </button>

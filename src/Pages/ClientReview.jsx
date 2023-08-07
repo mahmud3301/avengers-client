@@ -6,7 +6,7 @@ const ClientReview = () => {
       <h3
         data-aos="fade-up-right"
         className="text-3xl font-bold text-center mt-24 mb-12">
-        Clients <span className="text-primary">Review</span>
+        Clients <span className="text-error">Review</span>
       </h3>
       <Marquee pauseOnHover={true} pauseOnClick={true} gradientColor={true}>
         <div

@@ -39,7 +39,7 @@ const MyToysUpdate = ({
           <div className="modal-box w-11/12 max-w-2xl lg:max-w-4xl">
             <label
               onClick={updateCloseModal}
-              className="btn btn-sm btn-circle btn-primary absolute right-2 top-2"
+              className="btn btn-sm btn-circle btn-error absolute right-2 top-2"
             >
               ✕
             </label>
@@ -49,7 +49,7 @@ const MyToysUpdate = ({
                   data-aos="fade-left"
                   className="text-2xl font-bold mt-8 mb-14 text-center"
                 >
-                  Update <span className="text-primary">Toy</span>
+                  Update <span className="text-error">Toy</span>
                 </h2>
                 <form onSubmit={handleSubmit}>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
@@ -79,7 +79,7 @@ const MyToysUpdate = ({
                       <input
                         type="number"
                         id="price"
-                        className="input input-bordered border-primary w-80 md:w-full lg:w-full"
+                        className="input input-bordered border-error w-80 md:w-full lg:w-full"
                         required
                         placeholder="Price"
                         value={toyData.price}
@@ -94,7 +94,7 @@ const MyToysUpdate = ({
                       <input
                         type="number"
                         id="availableQuantity"
-                        className="input input-bordered border-primary w-80 md:w-full lg:w-full"
+                        className="input input-bordered border-error w-80 md:w-full lg:w-full"
                         required
                         placeholder="Quantity"
                         defaultValue={toyData.availableQuantity}
@@ -109,7 +109,7 @@ const MyToysUpdate = ({
                     <label className="label">Description</label>
                     <textarea
                       id="description"
-                      className="textarea input-bordered border-primary w-80 md:w-full lg:w-full"
+                      className="textarea input-bordered border-error w-80 md:w-full lg:w-full"
                       required
                       placeholder="Description"
                       value={toyData.description}
@@ -119,7 +119,7 @@ const MyToysUpdate = ({
                   <div className="flex justify-center mt-8">
                     <button
                       type="submit"
-                      className="btn btn-primary mx-auto w-48 md:w-full lg:w-full"
+                      className="btn btn-error mx-auto w-48 md:w-full lg:w-full"
                     >
                       Update Toy
                     </button>

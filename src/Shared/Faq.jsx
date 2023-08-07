@@ -2,7 +2,7 @@ import { BsCheckCircleFill } from "react-icons/bs";
 const Faq = () => {
   return (
     <div className="px-6 md:px-48 mt-36">
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
         <div>
           <div>
             <h1 className="text-6xl font-bold">
@@ -42,7 +42,7 @@ const Faq = () => {
         <div className="gap-8 mt-16 text-black">
           <div
             tabIndex={0}
-            className="collapse collapse-arrow border border-base-300 bg-primary rounded-xl my-3">
+            className="collapse collapse-arrow border border-base-300 bg-error rounded-xl my-3">
             <div className="collapse-title text-2xl font-bold">
               Can i cancel my subscription at any time?
             </div>
@@ -56,7 +56,7 @@ const Faq = () => {
           </div>
           <div
             tabIndex={0}
-            className="collapse collapse-arrow border border-base-300 bg-primary rounded-xl my-3">
+            className="collapse collapse-arrow border border-base-300 bg-error rounded-xl my-3">
             <div className="collapse-title text-2xl font-bold">
               How can I place an order for Marvel toys on your website?
             </div>
@@ -71,7 +71,7 @@ const Faq = () => {
           </div>
           <div
             tabIndex={0}
-            className="collapse collapse-arrow border border-base-300 bg-primary rounded-xl my-3">
+            className="collapse collapse-arrow border border-base-300 bg-error rounded-xl my-3">
             <div className="collapse-title text-2xl font-bold">
               What payment methods do you accept?
             </div>
@@ -85,7 +85,7 @@ const Faq = () => {
           </div>
           <div
             tabIndex={0}
-            className="collapse collapse-arrow border border-base-300 bg-primary rounded-xl my-3">
+            className="collapse collapse-arrow border border-base-300 bg-error rounded-xl my-3">
             <div className="collapse-title text-2xl font-bold">
               How much is shipping, and how long will it take to receive my
               order?
@@ -101,7 +101,7 @@ const Faq = () => {
           </div>
           <div
             tabIndex={0}
-            className="collapse collapse-arrow border border-base-300 bg-primary rounded-xl my-3">
+            className="collapse collapse-arrow border border-base-300 bg-error rounded-xl my-3">
             <div className="collapse-title text-2xl font-bold">
               Do you offer gift wrapping services?
             </div>

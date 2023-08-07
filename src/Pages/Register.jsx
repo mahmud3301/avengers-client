@@ -5,7 +5,7 @@ import {
   FacebookAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
-  getAuth, 
+  getAuth,
   signInWithPopup,
   updateProfile
 } from "firebase/auth";
@@ -14,7 +14,6 @@ import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 import UseTitle from "../Hooks/UseTitle";
-import registerPng from "../assets/login.png"
 
 const Register = () => {
   UseTitle("Register");
@@ -111,108 +110,114 @@ const Register = () => {
 
   return (
     <div>
-      <h1 data-aos="fade-up" className="text-5xl font-bold text-center mt-28"><span className="text-primary">Register</span> now!</h1>
-      <div className="hero bg-base-100 mb-24">
-        <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
-          <div data-aos="fade-right" className="text-center lg:text-left">
-            <p className="w-full h-full">
-              <img
-                className="w-96 mb-8"
-                src={registerPng}
-                alt=""
-              />
-            </p>
-          </div>
-          <form data-aos="fade-left" className="w-full" onSubmit={handleRegister}>
-            <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-base-100">
-              <div className="card-body">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Name</span>
-                  </label>
-                  <input
-                    type="name"
-                    name="name"
-                    placeholder="Name"
-                    className="input input-bordered"
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    className="input input-bordered"
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Password</span>
-                  </label>
-                  <div className="relative">
+      <div
+        className="hero min-h-screen"
+        style={{
+          backgroundImage:
+            "url(https://media.tenor.com/OyVcTJ6QTt8AAAAC/marvel-marvel-studios.gif)"
+        }}>
+        <div className="hero-overlay bg-primary  bg-opacity-20"></div>
+        <div className="hero-content text-center text-white">
+          <div>
+            <h1
+              data-aos="fade-down"
+              className="text-5xl font-bold text-center mt-28 mb-28">
+              <span className="text-error">Register</span> now!
+            </h1>
+            <form
+              data-aos="fade-left"
+              className="w-[33rem] h-[40rem]"
+              onSubmit={handleRegister}>
+              <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-base-100">
+                <div className="card-body">
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Name</span>
+                    </label>
                     <input
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      placeholder="Password"
-                      className="input input-bordered w-full"
+                      type="name"
+                      name="name"
+                      placeholder="Name"
+                      className="input input-bordered"
                     />
-                    <div
-                      className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                      onClick={() => setShowPassword(!showPassword)}>
-                      {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      className="input input-bordered"
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Password</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Password"
+                        className="input input-bordered w-full"
+                      />
+                      <div
+                        className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                      </div>
                     </div>
                   </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Photo Url</span>
+                    </label>
+                    <input
+                      type="url"
+                      name="url"
+                      placeholder="Photo Url"
+                      className="input input-bordered"
+                    />
+                  </div>
+                  <p className="mt-4">
+                    Already have an account?{" "}
+                    <Link to="/login" className="link link-error">
+                      Login
+                    </Link>
+                  </p>
+                  <div className="text-center mt-3 mb-3">
+                    <p className="text-error">{error}</p>
+                    <p className="text-error">{errorMassage}</p>
+                  </div>
+                  <div className="form-control mt-5">
+                    <button className="btn btn-error">Register</button>
+                  </div>
                 </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Photo Url</span>
-                  </label>
-                  <input
-                    type="url"
-                    name="url"
-                    placeholder="Photo Url"
-                    className="input input-bordered"
-                  />
-                </div>
-                <p className="mt-4">
-                  Already have an account?{" "}
-                  <Link to="/login" className="link link-primary">
-                    Login
-                  </Link>
-                </p>
-                <div className="text-center mt-3 mb-3">
-                  <p className="text-error">{error}</p>
-                  <p className="text-error">{errorMassage}</p>
-                </div>
-                <div className="form-control mt-5">
-                  <button className="btn btn-primary">Register</button>
+                <div className="divider">OR Register With</div>
+                <div className="card-body justify-center mx-auto">
+                  <div>
+                    <button
+                      onClick={handleGoogleRegister}
+                      className="btn btn-error mr-3">
+                      <FaGoogle></FaGoogle>
+                    </button>
+                    <button
+                      onClick={handleFacebookRegister}
+                      className="btn btn-error mr-3">
+                      <FaFacebook></FaFacebook>
+                    </button>
+                    <button
+                      onClick={handleGithubRegister}
+                      className="btn btn-error">
+                      <FaGithub></FaGithub>
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="divider">OR Register With</div>
-              <div className="card-body justify-center mx-auto">
-                <div>
-                  <button
-                    onClick={handleGoogleRegister}
-                    className="btn btn-primary mr-3">
-                    <FaGoogle></FaGoogle>
-                  </button>
-                  <button
-                    onClick={handleFacebookRegister}
-                    className="btn btn-primary mr-3">
-                    <FaFacebook></FaFacebook>
-                  </button>
-                  <button
-                    onClick={handleGithubRegister}
-                    className="btn btn-primary">
-                    <FaGithub></FaGithub>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>

@@ -20,8 +20,8 @@ const SubscribeUs = () => {
   };
   return (
     <div className="px-6 md:px-24 mt-24 text-white">
-      <div className="bg-base-300 rounded-2xl">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="bg-red-600 rounded-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="p-12 mt-12 lg:ml-5">
             <h1 className="text-5xl font-bold">Enjoy with subscribing us</h1>
             <p className="mt-16 text-xl font-medium">
@@ -43,13 +43,13 @@ const SubscribeUs = () => {
                 required
                 id="emailInput"
                 type="email"
-                className="input input-bordered w-96 join-item rounded-full"
+                className="input input-bordered w-24 md:w-96 join-item rounded-full"
                 placeholder="Your Email Here"
                 value={email}
                 onChange={handleInputChange}
               />
               <button
-                className="btn btn-success ml-5 rounded-full join-item rounded-r-full"
+                className="btn btn-accent ml-5 rounded-full join-item rounded-r-full"
                 onClick={handleSubscribe}>
                 Subscribe
               </button>
@@ -57,7 +57,7 @@ const SubscribeUs = () => {
           </div>
           <div>
             <img
-              className="rounded-3xl my-8 w-[96%] md:p-0 md:mr-6 left-3"
+              className="rounded-3xl my-8 w-[96%] ml-2 md:ml-6"
               src="https://cdn.marvel.com/u/prod/marvel/images/OpenGraph-TW-1200x630.jpg"
               alt=""
             />

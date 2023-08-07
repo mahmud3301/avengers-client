@@ -31,7 +31,7 @@ const AddToys = () => {
       seller,
       sellerEmail
     };
-    fetch("https://avengers-server-mahmud3301.vercel.app/all-toys-data", {
+    fetch("http://localhost:7000/all-toys-data", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -199,7 +199,7 @@ const AddToys = () => {
               />
             </div>
             <div className="lg:mx-0 mx-5 w-100">
-              <button type="submit" className="btn btn-primary btn-block">
+              <button type="submit" className="btn btn-error btn-block">
                 Submit
               </button>
             </div>

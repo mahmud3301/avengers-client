@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -12,7 +13,7 @@ const Header = () => {
   };
 
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "bumblebee"
+    localStorage.getItem("theme") || "whiteTheme"
   );
 
   useEffect(() => {
@@ -23,9 +24,9 @@ const Header = () => {
 
   const handleThemeChange = (e) => {
     if (e.target.checked) {
-      setTheme("halloween");
+      setTheme("darkTheme");
     } else {
-      setTheme("bumblebee");
+      setTheme("whiteTheme");
     }
   };
 
@@ -51,33 +52,31 @@ const Header = () => {
             </button>
             <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-52">
               <li>
-                <NavLink exact to="/" activeClassName="">
+                <NavLink exact to="/">
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/all-toys" activeClassName="">
-                  All Toys
-                </NavLink>
+                <NavLink to="/all-toys">All Toys</NavLink>
+              </li>
+              <li>
+                <NavLink to="/about-us">About Us</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contract-us">Contract Us</NavLink>
               </li>
               {user && (
                 <>
                   <li>
-                    <NavLink to="/my-toys" activeClassName="">
-                      My Toys
-                    </NavLink>
+                    <NavLink to="/my-toys">My Toys</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/add-toys" activeClassName="">
-                      Add A Toy
-                    </NavLink>
+                    <NavLink to="/add-toys">Add A Toy</NavLink>
                   </li>
                 </>
               )}
               <li>
-                <NavLink to="/blogs" activeClassName="">
-                  Blog
-                </NavLink>
+                <NavLink to="/blogs">Blog</NavLink>
               </li>
             </ul>
           </div>
@@ -90,10 +89,7 @@ const Header = () => {
                 />
               </div>
             </NavLink>
-            <NavLink
-              to="/"
-              className="font-bold text-xl ml-3 hidden lg:block"
-              activeClassName="">
+            <NavLink to="/" className="font-bold text-xl ml-3 hidden lg:block">
               Avengers Shop
             </NavLink>
           </div>
@@ -101,33 +97,31 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <NavLink exact to="/" activeClassName="">
+              <NavLink exact to="/">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/all-toys" activeClassName="">
-                All Toys
-              </NavLink>
+              <NavLink to="/all-toys">All Toys</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about-us">About Us</NavLink>
+            </li>
+            <li>
+              <NavLink to="/contract-us">Contract Us</NavLink>
             </li>
             {user && (
               <>
                 <li>
-                  <NavLink to="/my-toys" activeClassName="">
-                    My Toys
-                  </NavLink>
+                  <NavLink to="/my-toys">My Toys</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/add-toys" activeClassName="">
-                    Add Toys
-                  </NavLink>
+                  <NavLink to="/add-toys">Add Toys</NavLink>
                 </li>
               </>
             )}
             <li>
-              <NavLink to="/blogs" activeClassName="">
-                Blog
-              </NavLink>
+              <NavLink to="/blogs">Blog</NavLink>
             </li>
           </ul>
         </div>
@@ -136,7 +130,7 @@ const Header = () => {
             <input
               type="checkbox"
               onChange={handleThemeChange}
-              checked={theme === "halloween"}
+              checked={theme === "darkTheme"}
             />
             <svg
               className="swap-on fill-current w-10 h-10"
@@ -167,14 +161,12 @@ const Header = () => {
             </div>
           )}
           {user ? (
-            <button
-              className="btn btn-primary mr-3 ml-3"
-              onClick={handleLogOut}>
+            <button className="btn btn-error mr-3 ml-3" onClick={handleLogOut}>
               Logout
             </button>
           ) : (
             <NavLink to="/login">
-              <button className="btn btn-primary mr-3">Login</button>
+              <button className="btn btn-error mr-3">Login</button>
             </NavLink>
           )}
         </div>

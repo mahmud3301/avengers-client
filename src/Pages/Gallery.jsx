@@ -7,7 +7,7 @@ const Gallery = () => {
   const [isBlur, setIsBlur] = useState(true);
 
   useEffect(() => {
-    fetch("https://avengers-server-mahmud3301.vercel.app/image-gallery")
+    fetch("http://localhost:7000/image-gallery")
       .then((res) => res.json())
       .then((data) => {
         setGalleryData(data);
@@ -26,7 +26,7 @@ const Gallery = () => {
       <div className="p-8 container justify-center mx-auto">
         <div>
           <h2 data-aos="flip-left" className="text-3xl font-bold text-center mb-24 mt-11">
-            Our Top Avenger <span className="text-primary">Toys</span>
+            Our Top Avenger <span className="text-error">Toys</span>
           </h2>
           <div data-aos="zoom-in-up" className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-4 ">
             {galleryData?.slice(0, showAll ? 12 : 8).map((image) => (
@@ -37,7 +37,7 @@ const Gallery = () => {
                     alt={image.caption}
                     className={`w-full h-96 rounded p-4 ${isBlur ? "blur" : ""}`}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300 bg-black bg-opacity-50 rounded">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition duration-300 bg-black bg-opacity-60 rounded">
                     <p className="text-white text-lg font-bold">
                       {image.caption}
                     </p>
@@ -49,7 +49,7 @@ const Gallery = () => {
           {!showAll && (
             <div className="text-center">
               <span onClick={handleShowAll}>
-                <button className="btn btn-primary mt-16">See More</button>
+                <button className="btn btn-error mt-16">See More</button>
               </span>
             </div>
           )}

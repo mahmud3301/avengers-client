@@ -1,13 +1,18 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup
+} from "firebase/auth";
 import app from "../Firebase/firebase.config";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import UseTitle from "../Hooks/UseTitle";
 import { AuthContext } from "../Provider/AuthProvider";
-import loginPng from"../assets/login.png"
 
 const Login = () => {
   UseTitle("Login");
@@ -84,90 +89,90 @@ const Login = () => {
 
   return (
     <div>
-      <h1 data-aos="fade-down" className="text-5xl font-bold text-center mt-28">
-        <span className="text-primary">Login</span> now!
-      </h1>
-      <div className="hero bg-base-100">
-        <div className="hero-content mt-24 flex-col lg:flex-row-reverse">
-          <div data-aos="fade-left" className="text-center lg:text-left">
-            <p className="py-6">
-              <img
-                className="w-96 mb-8"
-                src={loginPng}
-                alt=""
-              />
-            </p>
-          </div>
-          <form data-aos="fade-right" className="w-full" onSubmit={handleLogin}>
-            <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-base-100">
-              <div className="card-body">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    className="input input-bordered"
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Password</span>
-                  </label>
-                  <div className="relative">
+      <div
+        className="hero min-h-screen"
+        style={{
+          backgroundImage:
+            "url(https://i.pinimg.com/originals/f2/d2/ee/f2d2ee07809be8f0139fb12071bb4d28.gif)"
+        }}>
+        <div className="hero-overlay bg-primary  bg-opacity-20"></div>
+        <div className="hero-content text-center text-white">
+          <div>
+            <h1
+              data-aos="fade-down"
+              className="text-5xl font-bold text-center mt-28 mb-28">
+              <span className="text-error">Login</span> now!
+            </h1>
+            <form
+              data-aos="fade-right"
+              className="w-[33rem] h-[40rem]"
+              onSubmit={handleLogin}>
+              <div className="card mr-0 lg:mr-16 shadow-2xl bg-base-100">
+                <div className="card-body">
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
                     <input
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      placeholder="Password"
-                      className="input input-bordered w-full"
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      className="input input-bordered"
                     />
-                    <div
-                      className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Password</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Password"
+                        className="input input-bordered w-full"
+                      />
+                      <div
+                        className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <p className="mt-4">
-                  Don't have an account?{" "}
-                  <Link to="/register" className="link link-primary">
-                    Register
-                  </Link>
-                </p>
-                <p className="text-error mt-3 text-center">{error}</p>
-                <div className="form-control mt-5">
-                  <button className="btn btn-primary">Login</button>
+                  <p className="mt-4">
+                    Don't have an account?{" "}
+                    <Link to="/register" className="link link-error">
+                      Register
+                    </Link>
+                  </p>
+                  <p className="text-error mt-3 text-center">{error}</p>
+                  <div className="form-control mt-5">
+                    <button className="btn btn-error">Login</button>
+                  </div>
+                </div>
+                <div className="divider">OR Login With</div>
+                <div className="card-body justify-center mx-auto">
+                  <div>
+                    <button
+                      onClick={handleGoogleLogin}
+                      className="btn btn-error mr-3">
+                      <FaGoogle />
+                    </button>
+                    <button
+                      onClick={handleFacebookLogin}
+                      className="btn btn-error mr-3">
+                      <FaFacebook />
+                    </button>
+                    <button
+                      onClick={handleGithubLogin}
+                      className="btn btn-error">
+                      <FaGithub />
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="divider">OR Login With</div>
-              <div className="card-body justify-center mx-auto">
-                <div>
-                  <button
-                    onClick={handleGoogleLogin}
-                    className="btn btn-primary mr-3"
-                  >
-                    <FaGoogle />
-                  </button>
-                  <button
-                    onClick={handleFacebookLogin}
-                    className="btn btn-primary mr-3"
-                  >
-                    <FaFacebook />
-                  </button>
-                  <button
-                    onClick={handleGithubLogin}
-                    className="btn btn-primary"
-                  >
-                    <FaGithub />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>

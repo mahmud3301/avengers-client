@@ -13,7 +13,7 @@ const Error = () => {
         />
       </div>
       <Link to="/">
-        <button className="btn btn-primary ml-[33%] lg:ml-[46%]">
+        <button className="btn btn-error ml-[33%] lg:ml-[46%]">
           Go Back To Home
         </button>
       </Link>
