@@ -4,7 +4,7 @@ const Faq = () => {
     <div className="px-6 md:px-48 mt-36">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div>
-          <div>
+          <div data-aos="fade-up">
             <h1 className="text-6xl font-bold">
               FAQ (Frequently Asked Questions)
             </h1>{" "}
@@ -39,7 +39,7 @@ const Faq = () => {
             </h3>
           </div>
         </div>
-        <div className="gap-8 mt-16 text-black">
+        <div data-aos="flip-up" className="gap-8 mt-16 text-black">
           <div
             tabIndex={0}
             className="collapse collapse-arrow border border-base-300 bg-error rounded-xl my-3">

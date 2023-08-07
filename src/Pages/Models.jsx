@@ -5,7 +5,9 @@ const Models = () => {
         <h1 data-aos="fade-up" className="my-12 font-bold text-center text-3xl">
           Owr Best <span className="text-error">Action Figures</span>
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div
+          data-aos="flip-up"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <div className="mt-24 hover:scale-95 transition duration-200 hover:shadow-2xl hover:shadow-[#dc2626] rounded-3xl p-8">
             <img
               className="rounded-3xl h-[25rem] w-[90rem]"
@@ -46,7 +48,11 @@ const Models = () => {
             </p>
           </div>
         </div>
-        <h1 className="my-24 font-bold text-center text-xl">These iconic characters have captivated audiences with <br /> their unique traits, diverse stories, and contributions to the interconnected Marvel universe.</h1>
+        <h1 className="my-24 font-bold text-center text-xl">
+          These iconic characters have captivated audiences with <br /> their
+          unique traits, diverse stories, and contributions to the
+          interconnected Marvel universe.
+        </h1>
       </div>
     </div>
   );

@@ -217,7 +217,7 @@ const MyToys = () => {
 
         <div data-aos="fade-up" className="overflow-x-auto">
           {myToys.length > 0 ? (
-            <table className="table bg-base-300 table-compact w-full text-center rounded-2xl">
+            <table className="table bg-base-300 table-compact w-full text-center rounded-2xl text-base-content">
               <thead>
                 <tr>
                   <th></th>

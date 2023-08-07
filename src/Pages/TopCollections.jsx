@@ -8,7 +8,7 @@ const TopCollections = () => {
             "url(https://i0.wp.com/videojuegos.enriqueortegaburgos.com/wp-content/uploads/2023/01/MARVEL.jpg?fit=768%2C518&ssl=1)"
         }}>
         <div className="hero-overlay bg-primary bg-opacity-20"></div>
-        <div className="hero-content text-center text-white">
+        <div data-aos="fade-up" className="hero-content text-center text-white">
           <div >
             <h1 className="mb-5 text-5xl font-bold">
               Explore the world of Marvel Toys

@@ -128,7 +128,7 @@ const Register = () => {
               data-aos="fade-left"
               className="w-[33rem] h-[40rem]"
               onSubmit={handleRegister}>
-              <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-base-100">
+              <div className="card flex-shrink-0 mr-0 lg:mr-16 shadow-2xl bg-base-100 text-base-content">
                 <div className="card-body">
                   <div className="form-control">
                     <label className="label">

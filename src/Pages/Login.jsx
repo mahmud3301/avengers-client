@@ -107,7 +107,7 @@ const Login = () => {
               data-aos="fade-right"
               className="w-[33rem] h-[40rem]"
               onSubmit={handleLogin}>
-              <div className="card mr-0 lg:mr-16 shadow-2xl bg-base-100">
+              <div className="card mr-0 lg:mr-16 shadow-2xl bg-base-100 text-base-content">
                 <div className="card-body">
                   <div className="form-control">
                     <label className="label">
